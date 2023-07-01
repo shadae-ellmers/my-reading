@@ -1,4 +1,7 @@
 {
   "/page": "app/page.js",
-  "/tbr-books/page": "app/tbr-books/page.js"
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/read-books/page": "app/read-books/page.js",
+  "/tbr-books/page": "app/tbr-books/page.js",
+  "/tbr-books/add-tbr/page": "app/tbr-books/add-tbr/page.js"
 }

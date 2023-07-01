@@ -231,7 +231,7 @@
       "id": "(app-client)/./node_modules/next/dist/client/link.js",
       "name": "*",
       "chunks": [
-        "app/read-books/page:static/chunks/app/read-books/page.js"
+        "app/tbr-books/page:static/chunks/app/tbr-books/page.js"
       ],
       "async": false
     },
@@ -239,7 +239,7 @@
       "id": "(app-client)/./node_modules/next/dist/client/link.js",
       "name": "*",
       "chunks": [
-        "app/read-books/page:static/chunks/app/read-books/page.js"
+        "app/tbr-books/page:static/chunks/app/tbr-books/page.js"
       ],
       "async": false
     }
@@ -254,6 +254,14 @@
         "static/css/app/layout.css"
       ]
     },
+    "/Users/shadaejade/personal-projects/my-reading/src/app/loading": {
+      "modules": [],
+      "files": []
+    },
+    "/Users/shadaejade/personal-projects/my-reading/src/app/read-books/page": {
+      "modules": [],
+      "files": []
+    },
     "/Users/shadaejade/personal-projects/my-reading/src/app/page": {
       "modules": [],
       "files": []
@@ -262,15 +270,7 @@
       "modules": [],
       "files": []
     },
-    "/Users/shadaejade/personal-projects/my-reading/src/app/read-books/page": {
-      "modules": [],
-      "files": []
-    },
     "/Users/shadaejade/personal-projects/my-reading/src/app/tbr-books/add-tbr/page": {
-      "modules": [],
-      "files": []
-    },
-    "/Users/shadaejade/personal-projects/my-reading/src/app/read-books/add-read/page": {
       "modules": [],
       "files": []
     }
