@@ -1,3 +1,6 @@
 {
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/read-books/page": "app/read-books/page.js",
+  "/tbr-books/page": "app/tbr-books/page.js"
 }

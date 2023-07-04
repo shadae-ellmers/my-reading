@@ -15,15 +15,36 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-ivory text-fern font-primary">
       <body className={inter.className}>
-        <h1>My Reading Tracker</h1>
-        <nav className="">
-          <Link href="/">Home</Link>
-          <Link href="/read-books">Read</Link>
-          <Link href="/tbr-books">To Be Read</Link>
-        </nav>
-        {children}
+        <div className="bg-fern text-ivory leading-loose text-center">
+          <a
+            className="block py-4 px-4 text-5xl underline hover:text-natural"
+            href="/"
+          >
+            My Reading Tracker
+          </a>
+        </div>
+        <div className="flex min-h-screen">
+          <nav className="w-1/5 bg-fern text-ivory leading-loose">
+            <a className="block py-2 px-4 text-3xl hover:text-natural" href="/">
+              Home
+            </a>
+            <a
+              className="block py-2 px-4 text-3xl hover:text-natural"
+              href="/read-books"
+            >
+              Read
+            </a>
+            <a
+              className="block py-2 px-4 text-3xl hover:text-natural"
+              href="/tbr-books"
+            >
+              To Be Read
+            </a>
+          </nav>
+          <div className="block py-4 px-4 w-4/5">{children}</div>
+        </div>
       </body>
     </html>
   )

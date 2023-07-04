@@ -19,6 +19,9 @@ module.exports = {
         apricot: '#e09132',
         fern: '#424530',
       },
+      fontFamily: {
+        primary: 'Main',
+      },
     },
   },
   plugins: [],
