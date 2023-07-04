@@ -1,8 +1,8 @@
-// File: /Users/shadaejade/personal-projects/my-reading/src/app/tbr-books/page.tsx
-import * as entry from '../../../../src/app/tbr-books/page.js'
+// File: /Users/shadaejade/personal-projects/my-reading/app/tbr-books/page.tsx
+import * as entry from '../../../../app/tbr-books/page.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
-type TEntry = typeof import('../../../../src/app/tbr-books/page.js')
+type TEntry = typeof import('../../../../app/tbr-books/page.js')
 
 // Check that the entry is a valid entry
 checkFields<Diff<{
