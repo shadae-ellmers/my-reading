@@ -1,6 +1,5 @@
 node_modules/
-.next/
-.swc/
+.next/*
+.swc/*
 .*.env
 .vercel
-.webpack

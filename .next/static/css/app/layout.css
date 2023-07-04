@@ -600,13 +600,13 @@ video {
 .leading-loose {
   line-height: 2;
 }
-.text-ivory {
-  --tw-text-opacity: 1;
-  color: rgb(255 239 205 / var(--tw-text-opacity));
-}
 .text-fern {
   --tw-text-opacity: 1;
   color: rgb(66 69 48 / var(--tw-text-opacity));
+}
+.text-ivory {
+  --tw-text-opacity: 1;
+  color: rgb(255 239 205 / var(--tw-text-opacity));
 }
 .underline {
   text-decoration-line: underline;
