@@ -1,21 +1,42 @@
 -- CreateTable
 CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
-    "email" TEXT NOT NULL,
+    "email" TEXT,
     "name" TEXT,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Post" (
+CREATE TABLE "CurrentBooks" (
     "id" SERIAL NOT NULL,
-    "title" TEXT NOT NULL,
-    "content" TEXT,
-    "published" BOOLEAN NOT NULL DEFAULT false,
-    "userId" INTEGER NOT NULL,
+    "title" TEXT,
+    "author" TEXT,
+    "cover" TEXT,
 
-    CONSTRAINT "Post_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "CurrentBooks_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "ReadBooks" (
+    "id" SERIAL NOT NULL,
+    "title" TEXT,
+    "author" TEXT,
+    "cover" TEXT,
+    "dateRead" TEXT,
+    "rating" TEXT,
+
+    CONSTRAINT "ReadBooks_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "TbrBooks" (
+    "id" SERIAL NOT NULL,
+    "title" TEXT,
+    "author" TEXT,
+    "cover" TEXT,
+
+    CONSTRAINT "CurrentBooks_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
