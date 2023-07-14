@@ -4,12 +4,7 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function main() {
-  await prisma.user.create({
-    data: {
-      name: `Scofield`,
-      email: `sco@gmail.com`,
-    },
-  })
+  const allCurrentBooks = await prisma.currentBooks.findMany()
 }
 
 main()
