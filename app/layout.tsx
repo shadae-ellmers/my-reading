@@ -43,7 +43,9 @@ export default function RootLayout({
               To Be Read
             </a>
           </nav>
-          <div className="block py-4 px-4 w-4/5">{children}</div>
+          <div className="block py-4 px-4 w-4/5 bg-ivory text-fern font-primary">
+            {children}
+          </div>
         </div>
       </body>
     </html>
