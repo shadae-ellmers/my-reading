@@ -3,40 +3,50 @@
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["jsonProtocol"]
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
-  directUrl = env("DIRECT_DATABASE_URL")
-  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  url      = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+  shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  id            String       @default(cuid()) @id
+  name          String?
+  email         String?   @unique
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+  @@map(name: "users")
 }
 
-model CurrentBooks {
-  id        Int     @id @default(autoincrement())
-  title     String
-  author    String
-  cover     String?
-}
+// model User {
+//   id    Int     @id @default(autoincrement())
+//   email String  @unique
+//   name  String?
+// }
 
-model ReadBooks {
-  id        Int     @id @default(autoincrement())
-  title     String
-  author    String
-  cover     String?
-  dateRead String?
-  rating    Int
-}
+// model CurrentBooks {
+//   id        Int     @id @default(autoincrement())
+//   title     String
+//   author    String
+//   cover     String?
+// }
 
-model TbrBooks {
-  id        Int     @id @default(autoincrement())
-  title     String
-  author    String
-  cover     String?
-}
+// model ReadBooks {
+//   id        Int     @id @default(autoincrement())
+//   title     String
+//   author    String
+//   cover     String?
+//   dateRead String?
+//   rating    Int
+// }
+
+// model TbrBooks {
+//   id        Int     @id @default(autoincrement())
+//   title     String
+//   author    String
+//   cover     String?
+// }
