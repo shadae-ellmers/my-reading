@@ -5,6 +5,7 @@ const prisma = new PrismaClient()
 
 async function main() {
   const allCurrentBooks = await prisma.currentBooks.findMany()
+  const allTbrBooks = await prisma.tbrBooks.findMany()
 }
 
 main()
