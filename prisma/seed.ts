@@ -3,10 +3,7 @@
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
-async function main() {
-  const allCurrentBooks = await prisma.currentBooks.findMany()
-  const allTbrBooks = await prisma.tbrBooks.findMany()
-}
+async function main() {}
 
 main()
   .catch((e) => {
