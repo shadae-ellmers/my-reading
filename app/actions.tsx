@@ -30,3 +30,12 @@ export async function addNewBookData(book: any) {
     return newBook
   }
 }
+
+export async function deleteCurrentBook(bookId: string) {
+  const delBook = prisma.currentBooks.delete({
+    where: {
+      id: bookId,
+    },
+  })
+  return delBook
+}

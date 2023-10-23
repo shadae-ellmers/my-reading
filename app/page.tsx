@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { CurrentReadBook } from '../components/CurrentReadBook'
 import { AddBookButton } from '../components/AddBookButton'
-import OnClickDelete from '../components/OnClickDelete'
 import prisma from '../prisma/client'
 
 function getCurrentReadBooks() {

@@ -28,14 +28,12 @@ export default async function Page() {
       <div>
         {allTbrBooks.map((book) => (
           <div key={book.id} className="flex flex-row py-3">
-            {/* <img src={book.cover} alt="book cover" className="block pr-5" /> */}
             <div className="flex flex-col justify-evenly">
               <h3 className="font-extrabold">{book.title}</h3>
               <p className="text-xl">{book.author}</p>
               <div className="flex flex-row py-3">
                 <a
                   href="#_"
-                  // onClick={() => clickHandler(book, book.id)}
                   className="relative inline-block text-lg group mr-1"
                 >
                   <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-fern transition-colors duration-300 ease-out border-2 border-fern rounded-lg group-hover:text-apricot">
@@ -50,7 +48,6 @@ export default async function Page() {
                 </a>
                 <a
                   href="#_"
-                  // onClick={() => deleteHandler(book.id)}
                   className="relative inline-block text-lg group ml-1"
                 >
                   <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-fern transition-colors duration-300 ease-out border-2 border-fern rounded-lg group-hover:text-apricot">
