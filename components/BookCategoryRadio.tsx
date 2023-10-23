@@ -1,20 +1,24 @@
 'use client'
 
 import { ChangeEvent, FormEvent, useState } from 'react'
+import { addNewBookData } from '../app/actions'
 
 export function BookCategoryRadio() {
   const [category, setCategory] = useState('')
-  const [newBook, setNewBook] = useState({ title: '', author: '', rating: '' })
+  const [newBook, setNewBook] = useState({
+    category: '',
+    title: '',
+    author: '',
+    rating: '',
+  })
 
   function changeCategory(event: ChangeEvent<HTMLInputElement>) {
     setCategory(event.target.value)
+    setNewBook({ ...newBook, category: event.target.value })
   }
 
-  function addNewBook(evt: FormEvent) {
-    evt.preventDefault()
-    console.log('Title:', newBook.title)
-    console.log('Author:', newBook.author)
-    console.log('Rating:', newBook.rating)
+  function addNewBook() {
+    addNewBookData(newBook)
   }
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +44,7 @@ export function BookCategoryRadio() {
       category === 'tbr' ||
       category === 'read' ? (
         <div>
-          <form>
+          <form action={addNewBook}>
             <label htmlFor="title">Title: </label>
             <input
               type="text"
