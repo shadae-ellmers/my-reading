@@ -3,12 +3,8 @@ import { CurrentReadBook } from '../components/CurrentReadBook'
 import { AddBookButton } from '../components/AddBookButton'
 import prisma from '../prisma/client'
 
-function getCurrentReadBooks() {
-  return prisma.currentBooks.findMany()
-}
-
 export default async function Page() {
-  const allCurrentBooks = await getCurrentReadBooks()
+  const allCurrentBooks = await prisma.currentBooks.findMany()
 
   return (
     <section className="text-2xl leading-loose">
