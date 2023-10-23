@@ -48,3 +48,12 @@ export async function deleteTbrBook(bookId: string) {
   })
   return delBook
 }
+
+export async function deleteReadBook(bookId: string) {
+  const delBook = prisma.readBooks.delete({
+    where: {
+      id: bookId,
+    },
+  })
+  return delBook
+}
