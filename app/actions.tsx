@@ -2,6 +2,8 @@
 
 import prisma from '../prisma/client'
 
+// create data
+
 export async function addNewBookData(book: any) {
   if (book.category === 'currentread') {
     const newBook = prisma.currentBooks.create({
@@ -30,6 +32,8 @@ export async function addNewBookData(book: any) {
     return newBook
   }
 }
+
+// delete data
 
 export async function deleteCurrentBook(bookId: string) {
   const delBook = prisma.currentBooks.delete({

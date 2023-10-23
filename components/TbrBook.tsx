@@ -1,6 +1,6 @@
 'use client'
 
-import { deleteTbrBook } from '../app/actions'
+import { addNewBookData, deleteTbrBook } from '../app/actions'
 import { useRouter } from 'next/navigation'
 
 type TbrBookProps = {
@@ -12,7 +12,19 @@ type TbrBookProps = {
 export function TbrBook({ id, title, author }: TbrBookProps) {
   const router = useRouter()
 
-  function handleClick() {
+  function handleMoveClick() {
+    const bookObj = {
+      id: id,
+      title: title,
+      author: author,
+      category: 'currentread',
+    }
+    addNewBookData(bookObj)
+    deleteTbrBook(id)
+    handleRefresh()
+  }
+
+  function handleDeleteClick() {
     deleteTbrBook(id)
     handleRefresh()
   }
@@ -27,7 +39,11 @@ export function TbrBook({ id, title, author }: TbrBookProps) {
         <h3 className="font-extrabold">{title}</h3>
         <p className="text-xl">{author}</p>
         <div className="flex flex-row py-3">
-          <a href="#_" className="relative inline-block text-lg group mr-1">
+          <a
+            href="#_"
+            onClick={handleMoveClick}
+            className="relative inline-block text-lg group mr-1"
+          >
             <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-fern transition-colors duration-300 ease-out border-2 border-fern rounded-lg group-hover:text-apricot">
               <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-apricot"></span>
               <span className="absolute left-0 w-48 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-fern group-hover:-rotate-180 ease"></span>
@@ -40,7 +56,7 @@ export function TbrBook({ id, title, author }: TbrBookProps) {
           </a>
           <a
             href="#_"
-            onClick={handleClick}
+            onClick={handleDeleteClick}
             className="relative inline-block text-lg group ml-1"
           >
             <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-fern transition-colors duration-300 ease-out border-2 border-fern rounded-lg group-hover:text-apricot">
