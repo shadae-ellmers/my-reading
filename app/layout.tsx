@@ -1,6 +1,5 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,37 +14,43 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="bg-mywhite text-myblack font-primary">
+    <html lang="en" className="bg-mypink text-myblack font-primary">
       <body className={inter.className}>
-        <nav className="bg-myblack text-mywhite leading-loose flex">
+        <nav className="bg-myblack text-mywhite leading-loose flex justify-between h-auto">
           <a
-            className="w-1/2 py-4 px-4 flex items-center text-5xl underline hover:text-mypink"
+            className="py-8 px-16 flex items-center text-5xl hover:text-mypink"
             href="/"
           >
             My Reading Tracker
           </a>
-          <div className="w-1/2 flex justify-evenly">
+          <div className="flex justify-end pr-8">
             <a
-              className="py-2 px-4 text-3xl flex items-center hover:text-mypink"
+              className="py-4 px-8 text-2xl flex items-center hover:text-mypink"
               href="/"
             >
               Home
             </a>
             <a
-              className="py-2 px-4 text-3xl flex items-center hover:text-mypink"
+              className="py-4 px-8 text-2xl flex items-center hover:text-mypink"
               href="/read-books"
             >
               Read
             </a>
             <a
-              className="py-2 px-4 text-3xl flex items-center hover:text-mypink"
+              className="py-4 px-8 text-2xl flex items-center hover:text-mypink"
               href="/tbr-books"
             >
               To Be Read
             </a>
+            <a
+              className="py-4 px-8 flex items-center hover:text-mypink"
+              href="#"
+            >
+              <img src="bars-solid.svg" alt="three bars" className="w-8"></img>
+            </a>
           </div>
         </nav>
-        <div className="block py-4 px-4 bg-mypink text-myblack font-primary">
+        <div className="block py-8 px-16 bg-mypink text-myblack font-primary">
           {children}
         </div>
       </body>
