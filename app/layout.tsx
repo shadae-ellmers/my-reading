@@ -50,7 +50,7 @@ export default function RootLayout({
             </a>
           </div>
         </nav>
-        <div className="block py-8 px-16 bg-mypink text-myblack font-primary">
+        <div className="block bg-mypink text-myblack font-primary">
           {children}
         </div>
       </body>
