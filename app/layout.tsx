@@ -15,37 +15,38 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="bg-ivory text-fern font-primary">
+    <html lang="en" className="bg-mywhite text-myblack font-primary">
       <body className={inter.className}>
-        <div className="bg-fern text-ivory leading-loose text-center">
+        <nav className="bg-myblack text-mywhite leading-loose flex">
           <a
-            className="block py-4 px-4 text-5xl underline hover:text-natural"
+            className="w-1/2 py-4 px-4 flex items-center text-5xl underline hover:text-mypink"
             href="/"
           >
             My Reading Tracker
           </a>
-        </div>
-        <div className="flex min-h-screen">
-          <nav className="w-1/5 bg-fern text-ivory leading-loose">
-            <a className="block py-2 px-4 text-3xl hover:text-natural" href="/">
+          <div className="w-1/2 flex justify-evenly">
+            <a
+              className="py-2 px-4 text-3xl flex items-center hover:text-mypink"
+              href="/"
+            >
               Home
             </a>
             <a
-              className="block py-2 px-4 text-3xl hover:text-natural"
+              className="py-2 px-4 text-3xl flex items-center hover:text-mypink"
               href="/read-books"
             >
               Read
             </a>
             <a
-              className="block py-2 px-4 text-3xl hover:text-natural"
+              className="py-2 px-4 text-3xl flex items-center hover:text-mypink"
               href="/tbr-books"
             >
               To Be Read
             </a>
-          </nav>
-          <div className="block py-4 px-4 w-4/5 bg-ivory text-fern font-primary">
-            {children}
           </div>
+        </nav>
+        <div className="block py-4 px-4 bg-mypink text-myblack font-primary">
+          {children}
         </div>
       </body>
     </html>

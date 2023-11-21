@@ -14,10 +14,11 @@ module.exports = {
     },
     extend: {
       colors: {
-        ivory: '#ffefcd',
-        natural: '#a58e74',
-        apricot: '#e09132',
-        fern: '#424530',
+        myblack: '#1E1C1B',
+        mygreen: '#759679',
+        myred: '#783F36',
+        mypink: '#D59C91',
+        mywhite: '#F6F4F1',
       },
       fontFamily: {
         primary: 'Main',
