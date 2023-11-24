@@ -21,7 +21,7 @@ export default function RootLayout({
             className="py-8 px-16 flex items-center text-5xl hover:text-mypink"
             href="/"
           >
-            My Reading Tracker
+            Reading Tracker
           </a>
           <div className="flex justify-end pr-8">
             <a
