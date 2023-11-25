@@ -1,3 +1,7 @@
 export default function Loading() {
-  return <p>loading...</p>
+  return (
+    <section className="justify-start h-screen">
+      <p>loading...</p>
+    </section>
+  )
 }
