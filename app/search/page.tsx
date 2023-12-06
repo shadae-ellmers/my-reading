@@ -1,5 +1,5 @@
 import { BookSearch } from '../../components/BookSearch'
-import { getData } from '../api/route'
+import { getData } from './actions'
 
 export default async function Page() {
   const data = await getData()
