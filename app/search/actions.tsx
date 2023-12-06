@@ -1,6 +1,6 @@
-export async function getData() {
+export async function getSearchResults(results: any) {
   const res = await fetch(
-    'https://openlibrary.org/search.json?title=hello&limit=5'
+    `https://openlibrary.org/search.json?title=${results}&limit=5`
   )
 
   if (!res.ok) {
