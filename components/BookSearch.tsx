@@ -25,22 +25,27 @@ export function BookSearch() {
   return (
     <section>
       <form action="submit" onSubmit={handleSubmit}>
-        <label htmlFor="book">Search book: </label>
+        <label htmlFor="book" className="text-myblack text-3xl mx-4">
+          Search:
+        </label>
         <input
           type="text"
           id="book"
           name="book"
+          placeholder="Type a book title"
           value={bookSearch}
           onChange={handleChange}
+          className="bg-mywhite text-myblack py-2 px-2 mx-4"
         />
-        <input type="submit" />
+        <input
+          className="mx-4 py-2 px-8 w-fit text-mywhite bg-myred rounded-full"
+          type="submit"
+        />
       </form>
       {searchResults ? (
-        <div className="h-fit">
+        <div className="py-4">
           {searchResults.map((book: any) => (
-            <div key={book.key}>
-              <h2 className="font-extrabold">{book.title}</h2>
-              <p>{book.author_name[0]}</p>
+            <div key={book.key} className="py-4 flex flex-row">
               {book.cover_edition_key ? (
                 <img
                   src={
@@ -50,6 +55,7 @@ export function BookSearch() {
                   }
                   alt="book cover"
                   width="200"
+                  className="py-1 px-4"
                 />
               ) : (
                 <div>
@@ -57,9 +63,19 @@ export function BookSearch() {
                     src="cover-placeholder.png"
                     alt="book cover placeholder"
                     width="200"
+                    className="py-1 px-4"
                   />
                 </div>
               )}
+              <div className="flex flex-col justify-between">
+                <div>
+                  <h2 className="text-2xl my-1">{book.title}</h2>
+                  <p className="text-xl my-1">{book.author_name[0]}</p>
+                </div>
+                <button className="my-1 py-2 px-8 w-fit text-mywhite bg-myred rounded-full">
+                  Add book
+                </button>
+              </div>
             </div>
           ))}
         </div>
