@@ -15,93 +15,91 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="bg-mypink text-myblack font-primary">
-      <body className={inter.className}>
-        <div className="flex flex-col h-screen justify-between">
-          <nav className="bg-myblack text-mywhite leading-loose flex justify-between h-auto">
+      <body className="flex flex-col min-h-screen justify-between">
+        <nav className="bg-myblack text-mywhite flex justify-between">
+          <a
+            className="py-8 px-16 flex items-center text-5xl hover:text-mypink"
+            href="/"
+          >
+            Reading Tracker
+          </a>
+          <div className="flex justify-end pr-8">
             <a
-              className="py-8 px-16 flex items-center text-5xl hover:text-mypink"
+              className="py-4 px-8 text-2xl flex items-center hover:text-mypink"
+              href="/"
+            >
+              Home
+            </a>
+            <a
+              className="py-4 px-8 text-2xl flex items-center hover:text-mypink"
+              href="/read-books"
+            >
+              Read
+            </a>
+            <a
+              className="py-4 px-8 text-2xl flex items-center hover:text-mypink"
+              href="/tbr-books"
+            >
+              To Be Read
+            </a>
+            <a
+              className="py-4 px-8 flex items-center hover:text-mypink"
+              href="#"
+            >
+              <img
+                src="bars-solid.svg"
+                alt="three bars"
+                className="px-6"
+                width="80"
+              ></img>
+            </a>
+          </div>
+        </nav>
+        <div className="bg-mypink text-myblack relative h-auto font-primary justify-start">
+          {children}
+        </div>
+        <footer className="bg-myred text-mywhite flex row-auto py-8 px-16 w-full justify-between">
+          <div className="flex row-auto">
+            <img
+              src="dog-placeholder-removebg.png"
+              alt="fluffy tan dog animation"
+              height="100"
+              width="150"
+            />
+            <a
+              className="py-8 px-16 flex items-center text-4xl hover:text-mypink"
               href="/"
             >
               Reading Tracker
             </a>
-            <div className="flex justify-end pr-8">
-              <a
-                className="py-4 px-8 text-2xl flex items-center hover:text-mypink"
-                href="/"
-              >
-                Home
-              </a>
-              <a
-                className="py-4 px-8 text-2xl flex items-center hover:text-mypink"
-                href="/read-books"
-              >
-                Read
-              </a>
-              <a
-                className="py-4 px-8 text-2xl flex items-center hover:text-mypink"
-                href="/tbr-books"
-              >
-                To Be Read
-              </a>
-              <a
-                className="py-4 px-8 flex items-center hover:text-mypink"
-                href="#"
-              >
-                <img
-                  src="bars-solid.svg"
-                  alt="three bars"
-                  className="px-6"
-                  width="80"
-                ></img>
-              </a>
-            </div>
-          </nav>
-          <div className="bg-mypink text-myblack block font-primary justify-start">
-            {children}
           </div>
-          <footer className="bg-myred text-mywhite flex row-auto py-8 px-16 w-full justify-between">
-            <div className="flex row-auto">
+          <div className="flex row-auto w-1/2 justify-end">
+            <a href="#" className="flex justify-center py-0 my-auto">
               <img
-                src="dog-placeholder-removebg.png"
-                alt="fluffy tan dog animation"
-                height="200"
-                width="200"
-              />
-              <a
-                className="py-8 px-16 flex items-center text-4xl hover:text-mypink"
-                href="/"
-              >
-                Reading Tracker
-              </a>
-            </div>
-            <div className="flex row-auto w-1/2 justify-end">
-              <a href="#" className="flex justify-center py-0 my-auto">
-                <img
-                  src="instagram.svg"
-                  alt="instagram icon"
-                  className="p-6"
-                  width="80"
-                ></img>
-              </a>
-              <a href="#" className="flex justify-center py-0 my-auto">
-                <img
-                  src="tiktok.svg"
-                  alt="tiktok icon"
-                  className="p-6"
-                  width="80"
-                ></img>
-              </a>
-              <a href="#" className="flex justify-center py-0 my-auto">
-                <img
-                  src="twitter.svg"
-                  alt="twitter icon"
-                  className="p-6"
-                  width="80"
-                ></img>
-              </a>
-            </div>
-          </footer>
-        </div>
+                src="instagram.svg"
+                alt="instagram icon"
+                className="p-4"
+                width="80"
+              ></img>
+            </a>
+            <a href="#" className="flex justify-center py-0 my-auto">
+              <img
+                src="tiktok.svg"
+                alt="tiktok icon"
+                className="p-4"
+                width="80"
+              ></img>
+            </a>
+            <a href="#" className="flex justify-center py-0 my-auto">
+              <img
+                src="twitter.svg"
+                alt="twitter icon"
+                className="p-4"
+                width="80"
+              ></img>
+            </a>
+          </div>
+        </footer>
       </body>
     </html>
   )

@@ -36,7 +36,7 @@ export function BookSearch() {
         <input type="submit" />
       </form>
       {searchResults ? (
-        <div>
+        <div className="h-fit">
           {searchResults.map((book: any) => (
             <div key={book.key}>
               <h2 className="font-extrabold">{book.title}</h2>
@@ -52,8 +52,13 @@ export function BookSearch() {
                   width="200"
                 />
               ) : (
-                <></>
-                // enter default cover here
+                <div>
+                  <img
+                    src="cover-placeholder.png"
+                    alt="book cover placeholder"
+                    width="200"
+                  />
+                </div>
               )}
             </div>
           ))}
