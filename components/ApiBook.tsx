@@ -16,6 +16,7 @@ export function ApiBook({
 }: ApiBookProps) {
   const [category, setCategory] = useState('')
   const [radio, showRadio] = useState(false)
+  const [readRating, setReadRating] = useState('5')
 
   function changeCategory(event: ChangeEvent<HTMLInputElement>) {
     setCategory(event.target.value)
@@ -27,12 +28,19 @@ export function ApiBook({
       author: author_name.toString(),
       category: category,
       cover: cover_edition_key,
+      rating: readRating,
     }
     addNewBookData(formattedBook)
   }
 
   const handleClick = () => {
     showRadio(!radio)
+  }
+
+  const handleRating = (event: ChangeEvent<HTMLInputElement>) => {
+    console.log(readRating)
+    setReadRating(event.target.value)
+    console.log(readRating)
   }
 
   return (
@@ -85,6 +93,21 @@ export function ApiBook({
             />{' '}
             Read
           </div>
+          {category === 'read' ? (
+            <div onChange={handleRating}>
+              <form>
+                <label htmlFor="rating">Add rating: </label>
+                <input
+                  type="text"
+                  name="rating"
+                  id="rating"
+                  value={readRating}
+                />
+              </form>
+            </div>
+          ) : (
+            <></>
+          )}
           <div>
             <button onClick={handleAdd} type="submit">
               Submit
