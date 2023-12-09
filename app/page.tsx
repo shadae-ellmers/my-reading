@@ -7,7 +7,7 @@ export default async function Page() {
   const allCurrentBooks = await prisma.currentBooks.findMany()
 
   return (
-    <section>
+    <section className="min-h-screen">
       <div className="relative">
         <img
           src="studio.jpg"

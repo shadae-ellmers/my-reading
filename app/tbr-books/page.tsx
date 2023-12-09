@@ -7,7 +7,7 @@ export default async function Page() {
   const allTbrBooks = await prisma.tbrBooks.findMany()
 
   return (
-    <section>
+    <section className="min-h-screen">
       <div className="relative">
         <img
           src="studio.jpg"
