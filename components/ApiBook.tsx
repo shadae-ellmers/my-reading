@@ -1,7 +1,7 @@
 'use client'
 
 import { ChangeEvent, useState } from 'react'
-import { addApiBookData } from '../app/actions'
+import { addNewBookData } from '../app/actions'
 
 type ApiBookProps = {
   title: string
@@ -28,7 +28,7 @@ export function ApiBook({
       category: category,
       cover: cover_edition_key,
     }
-    addApiBookData(formattedBook)
+    addNewBookData(formattedBook)
   }
 
   const handleClick = () => {
