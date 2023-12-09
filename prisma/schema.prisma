@@ -26,14 +26,14 @@ model CurrentBooks {
   id        String       @default(cuid()) @id
   title     String
   author    String
-  cover     String?
+  cover     String
 }
 
 model ReadBooks {
   id        String       @default(cuid()) @id
   title     String
   author    String
-  cover     String?
+  cover     String
   dateRead String?
   rating    Int
 }
@@ -42,5 +42,5 @@ model TbrBooks {
   id        String       @default(cuid()) @id
   title     String
   author    String
-  cover     String?
+  cover     String
 }

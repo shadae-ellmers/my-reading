@@ -2,7 +2,7 @@
 
 import prisma from '../prisma/client'
 
-// create data
+// // create data
 
 export async function addNewBookData(book: any) {
   if (book.category === 'currentread') {
@@ -10,6 +10,7 @@ export async function addNewBookData(book: any) {
       data: {
         title: book.title,
         author: book.author,
+        cover: book.cover,
       },
     })
     return newBook
@@ -18,6 +19,7 @@ export async function addNewBookData(book: any) {
       data: {
         title: book.title,
         author: book.author,
+        cover: book.cover,
       },
     })
     return newBook
@@ -26,6 +28,41 @@ export async function addNewBookData(book: any) {
       data: {
         title: book.title,
         author: book.author,
+        cover: book.cover,
+        rating: Number(book.rating),
+      },
+    })
+    return newBook
+  }
+}
+
+// create data from book api
+
+export async function addApiBookData(book: any) {
+  if (book.category === 'currentread') {
+    const newBook = prisma.currentBooks.create({
+      data: {
+        title: book.title,
+        author: book.author,
+        cover: book.cover,
+      },
+    })
+    return newBook
+  } else if (book.category === 'tbr') {
+    const newBook = prisma.tbrBooks.create({
+      data: {
+        title: book.title,
+        author: book.author,
+        cover: book.cover,
+      },
+    })
+    return newBook
+  } else if (book.category === 'read') {
+    const newBook = prisma.readBooks.create({
+      data: {
+        title: book.title,
+        author: book.author,
+        cover: book.cover,
         rating: Number(book.rating),
       },
     })

@@ -1,5 +1,8 @@
 'use client'
 
+import { ChangeEvent, useState } from 'react'
+import { addApiBookData } from '../app/actions'
+
 type ApiBookProps = {
   title: string
   author_name: object
@@ -11,6 +14,27 @@ export function ApiBook({
   author_name,
   cover_edition_key,
 }: ApiBookProps) {
+  const [category, setCategory] = useState('')
+  const [radio, showRadio] = useState(false)
+
+  function changeCategory(event: ChangeEvent<HTMLInputElement>) {
+    setCategory(event.target.value)
+  }
+
+  const handleAdd = () => {
+    const formattedBook = {
+      title: title,
+      author: author_name.toString(),
+      category: category,
+      cover: cover_edition_key,
+    }
+    addApiBookData(formattedBook)
+  }
+
+  const handleClick = () => {
+    showRadio(!radio)
+  }
+
   return (
     <section>
       <div className="py-4 flex flex-row">
@@ -27,8 +51,11 @@ export function ApiBook({
             width="200"
             className="pt-1 px-4 pb-4"
           />
-          <button className="my-1 py-2 px-8 w-fit text-mywhite bg-myred rounded-full">
-            Add book
+          <button
+            onClick={handleClick}
+            className="my-1 py-2 px-8 w-fit text-mywhite bg-myred rounded-full"
+          >
+            Add book to library
           </button>
         </div>
         <div className="flex flex-col max-w-2xl">
@@ -38,6 +65,35 @@ export function ApiBook({
           )}
         </div>
       </div>
+      {radio ? (
+        <>
+          <div onChange={changeCategory}>
+            <input
+              type="radio"
+              id="currentread"
+              name="book-category"
+              value="currentread"
+            />
+            Currently Reading
+            <input type="radio" id="tbr" name="book-category" value="tbr" /> To
+            Be Read
+            <input
+              type="radio"
+              id="read"
+              name="book-category"
+              value="read"
+            />{' '}
+            Read
+          </div>
+          <div>
+            <button onClick={handleAdd} type="submit">
+              Submit
+            </button>
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
     </section>
   )
 }
