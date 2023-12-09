@@ -3,7 +3,7 @@
 // BookSearch.tsx
 
 import React, { ChangeEvent, FormEvent, useState } from 'react'
-import { getSearchResults } from '../app/search/actions'
+import { getSearchResults } from '../app/actions'
 import { ApiBook } from './ApiBook'
 import { Pagination } from './Pagination'
 
