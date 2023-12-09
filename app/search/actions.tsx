@@ -1,6 +1,6 @@
 export async function getSearchResults(results: any) {
   const res = await fetch(
-    `https://openlibrary.org/search.json?q=${results}&limit=5`
+    `https://openlibrary.org/search.json?q=${results}&limit=15`
   )
 
   if (!res.ok) {
