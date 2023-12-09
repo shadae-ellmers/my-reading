@@ -31,7 +31,7 @@ export function ApiBook({
             Add book
           </button>
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col max-w-2xl">
           <h2 className="text-3xl my-1">{title}</h2>
           {Array.isArray(author_name) && author_name.length > 0 && (
             <p className="text-2xl my-1">{author_name[0]}</p>
