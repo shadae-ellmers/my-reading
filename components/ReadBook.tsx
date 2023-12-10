@@ -1,6 +1,7 @@
 'use client'
 
-import { deleteReadBook } from '../app/actions'
+import { ChangeEvent, useState } from 'react'
+import { deleteReadBook, updateReadBook } from '../app/actions'
 import { useRouter } from 'next/navigation'
 
 type ReadBookProps = {
@@ -12,15 +13,25 @@ type ReadBookProps = {
 }
 
 export function ReadBook({ id, title, author, rating, cover }: ReadBookProps) {
+  const [ratingForm, showRatingForm] = useState(false)
+  const [bookRating, updateBookRating] = useState('')
+
   const router = useRouter()
 
-  function handleClick() {
+  const handleClick = () => {
     deleteReadBook(id)
-    handleRefresh()
   }
 
-  function handleRefresh() {
-    router.refresh()
+  const handleRatingClick = () => {
+    showRatingForm(!ratingForm)
+  }
+
+  function changeRating(event: ChangeEvent<HTMLInputElement>) {
+    updateBookRating(event.target.value)
+  }
+
+  const handleRatingUpdate = () => {
+    updateReadBook(id, bookRating)
   }
 
   return (
@@ -36,15 +47,35 @@ export function ReadBook({ id, title, author, rating, cover }: ReadBookProps) {
           width="200"
           className="pt-1 px-4 pb-4"
         />
-        <button className="my-1 py-2 px-8 w-fit text-mywhite bg-myred rounded-full">
-          Update Rating
-        </button>
         <button
           onClick={handleClick}
           className="my-1 py-2 px-8 w-fit text-mywhite bg-myred rounded-full"
         >
           Remove Book
         </button>
+        <button
+          onClick={handleRatingClick}
+          className="my-1 py-2 px-8 w-fit text-mywhite bg-myred rounded-full"
+        >
+          Update Rating
+        </button>
+        {ratingForm ? (
+          <div onChange={changeRating}>
+            <form>
+              <label htmlFor="rating">Update rating: </label>
+              <input type="text" name="rating" id="rating" value={bookRating} />
+              <button
+                onClick={handleRatingUpdate}
+                type="submit"
+                className="my-1 py-2 px-8 w-fit text-mywhite bg-myred rounded-full"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
       <div className="flex flex-col max-w-2xl">
         <h2 className="text-3xl my-1">{title}</h2>

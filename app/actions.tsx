@@ -65,6 +65,20 @@ export async function deleteReadBook(bookId: string) {
   return delBook
 }
 
+// update book rating
+
+export async function updateReadBook(bookId: string, bookRating: string) {
+  const updBook = prisma.readBooks.update({
+    where: {
+      id: bookId,
+    },
+    data: {
+      rating: Number(bookRating),
+    },
+  })
+  return updBook
+}
+
 // get book data from api
 
 export async function getSearchResults(results: any) {
