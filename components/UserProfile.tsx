@@ -1,9 +1,10 @@
 'use client'
 
 import { useUser } from '@auth0/nextjs-auth0/client'
+import { withPageAuthRequired } from '@auth0/nextjs-auth0/client'
 
-export default async function UserProfile() {
-  const { user, error, isLoading } = useUser()
+export default withPageAuthRequired(function UserProfile({ user }) {
+  const { error, isLoading } = useUser()
 
   if (isLoading) return <div>Loading...</div>
   if (error) return <div>{error.message}</div>
@@ -20,4 +21,4 @@ export default async function UserProfile() {
       </div>
     )
   )
-}
+})
