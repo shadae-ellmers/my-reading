@@ -15,19 +15,21 @@ export default async function Page() {
           className="w-full max-h-60 object-cover"
         ></img>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-3">
-          <h1 className="text-mywhite font-semibold text-4xl">
-            Reach your reading goals
+          <h1 className="text-mywhite font-semibold text-4xl bg-myblack bg-opacity-70 px-8 py-3 rounded-3xl text-center">
+            Reach your reading goals with Readr
           </h1>
         </div>
       </div>
       <div className="text-2xl leading-loose py-8 px-16">
-        <p className="underline text-3xl font-extrabold">Currently Reading</p>
-        <AddBookButton />
-        <div>
-          {allCurrentBooks?.map((book) => (
-            <CurrentReadBook key={book.id} {...book} />
-          ))}
-        </div>
+        <h2>What is Readr?</h2>
+        <p>Readr is a website and app built to make reading fun and easy.</p>
+        <h2>Who are we?</h2>
+        <p>
+          Readr is built by a one-woman-team. I'm Shadae, and I work as a
+          software developer full time and code on the side, which is how this
+          project came to fruition. I love to read in my spare time, and wanted
+          a way to make tracking my reading fun and easy for me.
+        </p>
       </div>
     </section>
   )

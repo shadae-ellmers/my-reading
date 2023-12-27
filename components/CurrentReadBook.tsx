@@ -41,7 +41,7 @@ export function CurrentReadBook({
   }
 
   return (
-    <div className="flex flex-row py-4">
+    <div className="flex flex-row py-4 bg-mywhite bg-opacity-20 mr-8 mb-8 max-w-lg px-8">
       <div className="flex flex-col items-center">
         <img
           src={
@@ -50,25 +50,29 @@ export function CurrentReadBook({
               : 'cover-placeholder.png'
           }
           alt="book cover"
-          width="200"
-          className="pt-1 px-4 pb-4"
+          width="250"
+          className="pr-6 h-56"
         />
-        <button
-          onClick={handleMoveClick}
-          className="my-1 py-2 px-8 w-fit text-mywhite bg-myred rounded-full"
-        >
-          Finished Reading
-        </button>
-        <button
-          onClick={handleDeleteClick}
-          className="my-1 py-2 px-8 w-fit text-mywhite bg-myred rounded-full"
-        >
-          Remove Book
-        </button>
       </div>
-      <div className="flex flex-col max-w-2xl">
-        <h2 className="text-3xl my-1">{title}</h2>
-        <p className="text-2xl my-1">{author}</p>
+      <div className="flex flex-col max-w-2xl justify-between">
+        <div>
+          <h2 className="text-2xl my-1">{title}</h2>
+          <p className="text-xl my-1">{author}</p>
+        </div>
+        <div>
+          <button
+            onClick={handleMoveClick}
+            className="my-1 py-2 px-8 text-lg w-fit text-mywhite bg-myred rounded-full hover:bg-mywhite hover:text-myred"
+          >
+            Finished Reading
+          </button>
+          <button
+            onClick={handleDeleteClick}
+            className="my-1 py-2 px-8 text-lg w-fit text-mywhite bg-myred rounded-full hover:bg-mywhite hover:text-myred"
+          >
+            Remove Book
+          </button>
+        </div>
       </div>
     </div>
   )
