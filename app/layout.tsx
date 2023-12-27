@@ -20,21 +20,22 @@ export default function RootLayout({
       <UserProvider>
         <body className="flex flex-col min-h-screen justify-between">
           <nav className="bg-myblack text-mywhite flex justify-between">
-            <a
-              className="py-8 px-16 flex items-center text-5xl hover:text-mypink"
-              href="/"
-            >
-              Readr
+            <a className="py-4 px-8" href="/">
+              <img
+                src="readr-header-logo.png"
+                alt="readr logo"
+                className="max-h-32"
+              />
             </a>
             <div className="flex justify-end pr-8">
               <a
-                className="py-4 px-8 text-2xl flex items-center hover:text-mypink"
+                className="py-4 px-8 text-3xl font-semibold flex items-center hover:text-mypink"
                 href="/"
               >
                 Home
               </a>
               <a
-                className="py-4 px-8 text-2xl flex items-center hover:text-mypink"
+                className="py-4 px-8 text-3xl font-semibold flex items-center hover:text-mypink"
                 href="/shelves"
               >
                 Shelves

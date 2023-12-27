@@ -11,13 +11,13 @@ export default function Login() {
       {user ? (
         <div>
           <a
-            className="pt-4 pb-1 px-8 text-2xl flex items-center hover:text-mypink"
+            className="pt-4 pb-1 px-8 text-3xl font-semibold flex items-center hover:text-mypink"
             href="/profile"
           >
             Profile
           </a>
           <a
-            className="pt-1 pb-4 px-8 text-2xl flex items-center hover:text-mypink"
+            className="pt-1 pb-4 px-8 text-3xl font-semibold flex items-center hover:text-mypink"
             href="/api/auth/logout"
           >
             Logout
@@ -26,7 +26,7 @@ export default function Login() {
       ) : (
         <div>
           <a
-            className="py-4 px-8 text-2xl flex items-center hover:text-mypink"
+            className="py-4 px-8 text-3xl font-semibold flex items-center hover:text-mypink"
             href="/api/auth/login"
           >
             Login

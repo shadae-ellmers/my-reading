@@ -21,7 +21,7 @@ export default async function Shelves() {
       </div>
       <div className="text-2xl leading-loose py-8 px-16 flex flex-row">
         <div className="w-1/6 border-r-4 border-myred border-opacity-50 mr-8 pr-8">
-          <h2 className="text-3xl pb-4  border-b-2 border-myred border-opacity-50">
+          <h2 className="text-3xl pb-4 border-b-2 border-myred border-opacity-50">
             Shelves
           </h2>
           <a
@@ -44,7 +44,7 @@ export default async function Shelves() {
           </a>
         </div>
         <div className="w-5/6">
-          <p className="text-3xl font-bold pb-2">Currently Reading</p>
+          <p className="text-3xl font-semibold pb-2">Currently Reading</p>
           <AddBookButton />
           <div className="flex">
             {allCurrentBooks?.map((book) => (
