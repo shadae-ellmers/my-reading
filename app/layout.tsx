@@ -26,11 +26,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="bg-mypink text-myblack">
+    <html lang="en" className="bg-mywhite text-myblack">
       <UserProvider>
         <body className="flex flex-col min-h-screen justify-between">
           <div className={spaceMonoBig.className}>
-            <nav className="bg-myblack text-myblack flex justify-between pl-40 pr-40">
+            <nav className="bg-myblack text-myblack flex justify-between px-40">
               <a className="" href="/">
                 <img
                   src="readr-header-logo.png"
@@ -55,7 +55,7 @@ export default function RootLayout({
               </div>
             </nav>
           </div>
-          <div className="bg-mypink text-myblack relative h-auto justify-start">
+          <div className="bg-mywhite text-myblack relative h-auto justify-start">
             <div className={spaceMono.className}>{children}</div>
           </div>
           <footer className="bg-myred text-mywhite flex row-auto py-8 px-16 w-full justify-between">
