@@ -9,27 +9,33 @@ export default function Login() {
   return (
     <section className="flex items-center">
       {user ? (
-        <div>
+        <div className="flex flex-row">
           <a
-            className="pt-4 pb-1 px-8 text-3xl font-semibold flex items-center hover:text-mypink"
+            className="text-medium mx-2.5 rounded-3xl py-1.5 px-5 flex items-center hover:text-mypink bg-mywhite"
             href="/profile"
           >
             Profile
           </a>
           <a
-            className="pt-1 pb-4 px-8 text-3xl font-semibold flex items-center hover:text-mypink"
+            className="text-medium mx-2.5 rounded-3xl py-1.5 px-5 flex items-center hover:text-mypink bg-mywhite"
             href="/api/auth/logout"
           >
             Logout
           </a>
         </div>
       ) : (
-        <div>
+        <div className="flex flex-row">
           <a
-            className="py-4 px-8 text-3xl font-semibold flex items-center hover:text-mypink"
+            className="text-medium mx-2.5 rounded-3xl py-1.5 px-5 flex items-center hover:text-mypink bg-mywhite"
             href="/api/auth/login"
           >
             Login
+          </a>
+          <a
+            className="text-medium mx-2.5 rounded-3xl py-1.5 px-5 flex items-center hover:text-mypink bg-mywhite"
+            href="/api/auth/login"
+          >
+            Sign up
           </a>
         </div>
       )}

@@ -1,9 +1,19 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Space_Mono } from 'next/font/google'
 import { UserProvider } from '@auth0/nextjs-auth0/client'
 import Login from '../components/Login'
 
-const inter = Inter({ subsets: ['latin'] })
+const spaceMono = Space_Mono({
+  weight: '400',
+  subsets: ['latin'],
+  style: 'normal',
+})
+
+const spaceMonoBig = Space_Mono({
+  weight: '700',
+  subsets: ['latin'],
+  style: 'normal',
+})
 
 export const metadata = {
   title: 'Readr',
@@ -16,80 +26,84 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="bg-mypink text-myblack font-primary">
+    <html lang="en" className="bg-mypink text-myblack">
       <UserProvider>
         <body className="flex flex-col min-h-screen justify-between">
-          <nav className="bg-myblack text-mywhite flex justify-between">
-            <a className="py-4 px-8" href="/">
-              <img
-                src="readr-header-logo.png"
-                alt="readr logo"
-                className="max-h-32"
-              />
-            </a>
-            <div className="flex justify-end pr-8">
-              <a
-                className="py-4 px-8 text-3xl font-semibold flex items-center hover:text-mypink"
-                href="/"
-              >
-                Home
+          <div className={spaceMonoBig.className}>
+            <nav className="bg-myblack text-myblack flex justify-between pl-40 pr-40">
+              <a className="" href="/">
+                <img
+                  src="readr-header-logo.png"
+                  alt="readr logo"
+                  className="h-36 py-3"
+                />
               </a>
-              <a
-                className="py-4 px-8 text-3xl font-semibold flex items-center hover:text-mypink"
-                href="/shelves"
-              >
-                Shelves
-              </a>
-              <Login />
-            </div>
-          </nav>
-          <div className="bg-mypink text-myblack relative h-auto font-primary justify-start">
-            {children}
+              <div className="flex items-center">
+                <a
+                  className="text-medium mx-2.5 rounded-3xl h-fit py-1.5 px-5 flex items-center hover:text-mypink bg-mywhite"
+                  href="/"
+                >
+                  Home
+                </a>
+                <a
+                  className="text-medium mx-2.5 rounded-3xl h-fit py-1.5 px-5 flex items-center hover:text-mypink bg-mywhite"
+                  href="/shelves"
+                >
+                  Shelves
+                </a>
+                <Login />
+              </div>
+            </nav>
+          </div>
+          <div className="bg-mypink text-myblack relative h-auto justify-start">
+            <div className={spaceMono.className}>{children}</div>
           </div>
           <footer className="bg-myred text-mywhite flex row-auto py-8 px-16 w-full justify-between">
-            <div className="flex row-auto">
-              <img
-                src="dog-placeholder-removebg.png"
-                alt="fluffy tan dog animation"
-                height="100"
-                width="150"
-              />
-              <a
-                className="py-8 px-16 flex items-center text-4xl hover:text-mypink"
-                href="/"
-              >
-                Readr
-              </a>
-            </div>
-            <div className="flex row-auto w-1/2 justify-end">
-              <a
-                href="https://www.instagram.com/readrco/"
-                target="_blank"
-                className="flex justify-center py-0 my-auto"
-              >
+            <div className={spaceMonoBig.className}>
+              <div className="flex row-auto">
                 <img
-                  src="instagram.svg"
-                  alt="instagram icon"
-                  className="p-4"
-                  width="80"
-                ></img>
-              </a>
-              <a href="#" className="flex justify-center py-0 my-auto">
-                <img
-                  src="tiktok.svg"
-                  alt="tiktok icon"
-                  className="p-4"
-                  width="80"
-                ></img>
-              </a>
-              <a href="#" className="flex justify-center py-0 my-auto">
-                <img
-                  src="twitter.svg"
-                  alt="twitter icon"
-                  className="p-4"
-                  width="80"
-                ></img>
-              </a>
+                  src="dog-placeholder-removebg.png"
+                  alt="fluffy tan dog animation"
+                  height="100"
+                  width="150"
+                />
+                <a
+                  className="py-8 px-16 flex items-center text-4xl hover:text-mypink"
+                  href="/"
+                >
+                  Readr
+                </a>
+              </div>
+              <div className="flex row-auto w-1/2 justify-end">
+                <a
+                  href="https://www.instagram.com/readrco/"
+                  target="_blank"
+                  className="flex justify-center py-0 my-auto"
+                >
+                  <img
+                    src="instagram.svg"
+                    alt="instagram icon"
+                    className="p-4"
+                    width="80"
+                  ></img>
+                </a>
+                <a href="#" className="flex justify-center py-0 my-auto">
+                  <img
+                    src="tiktok.svg"
+                    alt="tiktok icon"
+                    className="p-4"
+                    width="80"
+                  ></img>
+                </a>
+                <a href="#" className="flex justify-center py-0 my-auto">
+                  <img
+                    src="twitter.svg"
+                    alt="twitter icon"
+                    className="p-4"
+                    width="80"
+                  ></img>
+                </a>
+              </div>
             </div>
           </footer>
         </body>

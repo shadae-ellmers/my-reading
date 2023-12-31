@@ -23,6 +23,12 @@ module.exports = {
       fontFamily: {
         primary: 'Main',
       },
+      fontSize: {
+        small: '15px',
+        medium: '20px',
+        large: '25px',
+        extralg: '30px',
+      },
     },
   },
   plugins: [],
