@@ -15,9 +15,9 @@ module.exports = {
     extend: {
       colors: {
         myblack: '#1E1C1B',
-        mygreen: '#759679',
-        myred: '#783F36',
-        mypink: '#D59C91',
+        mygreen: '#436B5C',
+        myred: '#C65038',
+        mypink: '#E6B5A6',
         mywhite: '#F6F4F1',
       },
       fontFamily: {
