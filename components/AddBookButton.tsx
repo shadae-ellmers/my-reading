@@ -1,9 +1,9 @@
 export function AddBookButton() {
   return (
-    <div className="flex flex-row py-3">
+    <div className="flex flex-row pt-6">
       <a
         href="/add-book"
-        className="my-4 py-2 px-8 text-lg w-fit text-mywhite bg-myred rounded-full hover:bg-mywhite hover:text-myred"
+        className="mx-2 my-2 bg-myblack text-mywhite rounded-3xl px-8 py-2 text-small hover:text-mywhite hover:bg-mygreen"
       >
         Add Books
       </a>

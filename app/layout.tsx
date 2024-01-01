@@ -109,10 +109,10 @@ export default function RootLayout({
               <div className="w-full flex flex-row py-6 justify-between text-small">
                 <p>©Copyright 2023 Readr</p>
                 <div className="flex flex-row justify-end">
-                  <a href="#" className="pr-4 hover:text-mypink">
+                  <a href="#" className="pr-4 hover:text-myred">
                     Privacy Policy
                   </a>
-                  <a href="#" className="pl-4 hover:text-mypink">
+                  <a href="#" className="pl-4 hover:text-myred">
                     Cookie Policy
                   </a>
                 </div>
