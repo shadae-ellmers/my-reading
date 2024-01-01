@@ -11,13 +11,13 @@ export default function Login() {
       {user ? (
         <div className="flex flex-row">
           <a
-            className="text-medium mx-2.5 rounded-3xl py-1.5 px-5 flex items-center hover:text-mypink bg-mywhite"
+            className="text-medium mx-2.5 rounded-3xl py-1.5 px-5 flex items-center hover:text-mywhite hover:bg-mygreen bg-mywhite"
             href="/profile"
           >
             Profile
           </a>
           <a
-            className="text-medium mx-2.5 rounded-3xl py-1.5 px-5 flex items-center hover:text-mypink bg-mywhite"
+            className="text-medium mx-2.5 rounded-3xl py-1.5 px-5 flex items-center hover:text-mywhite hover:bg-mygreen bg-mywhite"
             href="/api/auth/logout"
           >
             Logout
@@ -26,13 +26,13 @@ export default function Login() {
       ) : (
         <div className="flex flex-row">
           <a
-            className="text-medium mx-2.5 rounded-3xl py-1.5 px-5 flex items-center hover:text-mypink bg-mywhite"
+            className="text-medium mx-2.5 rounded-3xl py-1.5 px-5 flex items-center hover:text-mywhite hover:bg-mygreen bg-mywhite"
             href="/api/auth/login"
           >
             Login
           </a>
           <a
-            className="text-medium mx-2.5 rounded-3xl py-1.5 px-5 flex items-center hover:text-mypink bg-mywhite"
+            className="text-medium mx-2.5 rounded-3xl py-1.5 px-5 flex items-center hover:text-mywhite hover:bg-mygreen bg-mywhite"
             href="/api/auth/login"
           >
             Sign up

@@ -31,7 +31,7 @@ export default function RootLayout({
         <body className="flex flex-col min-h-screen justify-between">
           <div className={spaceMonoBig.className}>
             <nav className="bg-myblack text-myblack flex justify-between px-40">
-              <a className="" href="/">
+              <a className="hover:opacity-50" href="/">
                 <img
                   src="readr-header-logo.png"
                   alt="readr logo"
@@ -40,13 +40,13 @@ export default function RootLayout({
               </a>
               <div className="flex items-center">
                 <a
-                  className="text-medium mx-2.5 rounded-3xl h-fit py-1.5 px-5 flex items-center hover:text-mypink bg-mywhite"
+                  className="text-medium mx-2.5 rounded-3xl h-fit py-1.5 px-5 flex items-center hover:text-mywhite hover:bg-mygreen bg-mywhite"
                   href="/"
                 >
                   Home
                 </a>
                 <a
-                  className="text-medium mx-2.5 rounded-3xl h-fit py-1.5 px-5 flex items-center hover:text-mypink bg-mywhite"
+                  className="text-medium mx-2.5 rounded-3xl h-fit py-1.5 px-5 flex items-center hover:text-mywhite hover:bg-mygreen bg-mywhite"
                   href="/shelves"
                 >
                   Shelves
@@ -54,58 +54,71 @@ export default function RootLayout({
                 <Login />
               </div>
             </nav>
-          </div>
-          <div className="bg-mywhite text-myblack relative h-auto justify-start">
-            <div className={spaceMono.className}>{children}</div>
-          </div>
-          <footer className="bg-myred text-mywhite flex row-auto py-8 px-16 w-full justify-between">
-            <div className={spaceMonoBig.className}>
-              <div className="flex row-auto">
-                <img
-                  src="dog-placeholder-removebg.png"
-                  alt="fluffy tan dog animation"
-                  height="100"
-                  width="150"
-                />
-                <a
-                  className="py-8 px-16 flex items-center text-4xl hover:text-mypink"
-                  href="/"
-                >
-                  Readr
-                </a>
-              </div>
-              <div className="flex row-auto w-1/2 justify-end">
-                <a
-                  href="https://www.instagram.com/readrco/"
-                  target="_blank"
-                  className="flex justify-center py-0 my-auto"
-                >
-                  <img
-                    src="instagram.svg"
-                    alt="instagram icon"
-                    className="p-4"
-                    width="80"
-                  ></img>
-                </a>
-                <a href="#" className="flex justify-center py-0 my-auto">
-                  <img
-                    src="tiktok.svg"
-                    alt="tiktok icon"
-                    className="p-4"
-                    width="80"
-                  ></img>
-                </a>
-                <a href="#" className="flex justify-center py-0 my-auto">
-                  <img
-                    src="twitter.svg"
-                    alt="twitter icon"
-                    className="p-4"
-                    width="80"
-                  ></img>
-                </a>
-              </div>
+            <div className="bg-mywhite text-myblack relative h-auto justify-start">
+              <div>{children}</div>
             </div>
-          </footer>
+            <footer className="bg-myblack text-mywhite px-40">
+              <div className="flex flex-row w-full justify-between">
+                <a href="/" className="hover:opacity-50">
+                  <img
+                    src="readr-header-logo.png"
+                    alt="readr logo"
+                    className="h-36 py-3"
+                  />
+                </a>
+                <div className="flex row-auto w-full justify-end">
+                  <a
+                    href="https://www.instagram.com/readrco/"
+                    target="_blank"
+                    className="flex justify-center py-0 my-auto  hover:opacity-50"
+                  >
+                    <img
+                      src="instagram.svg"
+                      alt="instagram icon"
+                      className="px-4"
+                      width="70"
+                    ></img>
+                  </a>
+                  <a
+                    href="#"
+                    target="_blank"
+                    className="flex justify-center py-0 my-auto hover:opacity-50"
+                  >
+                    <img
+                      src="tiktok.svg"
+                      alt="tiktok icon"
+                      className="p-4"
+                      width="70"
+                    ></img>
+                  </a>
+                  <a
+                    href="#"
+                    target="_blank"
+                    className="flex justify-center py-0 my-auto hover:opacity-50"
+                  >
+                    <img
+                      src="twitter.svg"
+                      alt="twitter icon"
+                      className="p-4"
+                      width="70"
+                    ></img>
+                  </a>
+                </div>
+              </div>
+              <div className="w-full h-1 bg-mywhite opacity-10"></div>
+              <div className="w-full flex flex-row py-6 justify-between text-small">
+                <p>©Copyright 2023 Readr</p>
+                <div className="flex flex-row justify-end">
+                  <a href="#" className="pr-4 hover:text-mypink">
+                    Privacy Policy
+                  </a>
+                  <a href="#" className="pl-4 hover:text-mypink">
+                    Cookie Policy
+                  </a>
+                </div>
+              </div>
+            </footer>
+          </div>
         </body>
       </UserProvider>
     </html>
