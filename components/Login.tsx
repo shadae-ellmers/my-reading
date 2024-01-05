@@ -33,7 +33,7 @@ export default function Login() {
           </a>
           <a
             className="text-medium mx-2.5 rounded-3xl py-1.5 px-5 flex items-center hover:text-mywhite hover:bg-mygreen bg-mywhite"
-            href="/api/auth/login"
+            href="/api/auth/signup"
           >
             Sign up
           </a>

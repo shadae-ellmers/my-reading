@@ -3,10 +3,9 @@ import { CurrentReadBook } from '../components/CurrentReadBook'
 import { AddBookButton } from '../components/AddBookButton'
 import prisma from '../prisma/client'
 import TopBooks from '../components/TopBooks'
+import { addUser } from './actions'
 
 export default async function Page() {
-  const allCurrentBooks = await prisma.currentBooks.findMany()
-
   return (
     <section className="min-h-screen">
       {/* page banner */}

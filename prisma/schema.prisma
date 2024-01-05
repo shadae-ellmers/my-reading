@@ -10,37 +10,40 @@ datasource db {
   provider = "postgresql"
   url      = env("POSTGRES_PRISMA_URL")
   directUrl = env("POSTGRES_URL_NON_POOLING")
-  shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model User {
-  id            String       @default(cuid()) @id
-  name          String?
-  email         String?   @unique
+  id            String    @default(cuid()) @id
+  auth_id       String    @unique
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+  role          Role      @default(USER)
+  shelves       Shelf[]
+  books         Book[]
   @@map(name: "users")
 }
 
-model CurrentBooks {
-  id        String       @default(cuid()) @id
-  title     String
-  author    String
-  cover     String
+enum Role {
+  ADMIN
+  USER
 }
 
-model ReadBooks {
+model Book {
   id        String       @default(cuid()) @id
   title     String
   author    String
   cover     String
-  dateRead String?
-  rating    Int
+  dateRead  String?
+  rating    Int?
+  shelves   Shelf[]
+  user      User[]
 }
 
-model TbrBooks {
-  id        String       @default(cuid()) @id
-  title     String
-  author    String
-  cover     String
+model Shelf {
+  id            String       @default(cuid()) @id
+  title         String
+  description   String?
+  user          User         @relation(fields: [auth_id], references: [auth_id])
+  auth_id       String       
+  books         Book[]
 }
