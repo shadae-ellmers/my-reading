@@ -81,37 +81,38 @@ export async function addShelfData(
 
 // delete data
 
-// export async function deleteCurrentBook(bookId: string) {
-//   const delBook = prisma.currentBooks.delete({
-//     where: {
-//       id: bookId,
-//     },
-//   })
-//   return delBook
-// }
+export async function deleteBook(bookId: string, user: object | undefined) {
+  let userId = user.sub
 
-// export async function deleteTbrBook(bookId: string) {
-//   const delBook = prisma.tbrBooks.delete({
-//     where: {
-//       id: bookId,
-//     },
-//   })
-//   return delBook
-// }
+  const book = await prisma.book.findUnique({
+    where: {
+      id: bookId,
+    },
+    select: {
+      auth_id: true,
+    },
+  })
 
-// export async function deleteReadBook(bookId: string) {
-//   const delBook = prisma.readBooks.delete({
-//     where: {
-//       id: bookId,
-//     },
-//   })
-//   return delBook
-// }
+  if (!book || book.auth_id !== userId) {
+    throw new Error('Book not found or does not belong to the user.')
+  }
+
+  const delBook = prisma.book.deleteMany({
+    where: {
+      id: bookId,
+    },
+  })
+  return delBook
+}
 
 // update book rating
 
-// export async function updateReadBook(bookId: string, bookRating: string) {
-//   const updBook = prisma.readBooks.update({
+// export async function updateReadBook(
+//   bookId: string,
+//   bookRating: string,
+//   user: object | undefined
+// ) {
+//   const updBook = prisma.book.update({
 //     where: {
 //       id: bookId,
 //     },

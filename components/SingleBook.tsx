@@ -1,21 +1,25 @@
 'use client'
 
-import { addNewBookData, deleteCurrentBook } from '../app/actions'
+import { useUser } from '@auth0/nextjs-auth0/client'
+import { addNewBookData, deleteBook } from '../app/actions'
 import { useRouter } from 'next/navigation'
 
-type CurrentReadBookProps = {
+type SingleBookProps = {
   id: string
   title: string
   author: string
   cover: string
+  shelfId: string
 }
 
-export function CurrentReadBook({
+export function SingleBook({
   id,
   title,
   author,
   cover,
-}: CurrentReadBookProps) {
+  shelfId,
+}: SingleBookProps) {
+  const { user } = useUser()
   const router = useRouter()
 
   function handleMoveClick() {
@@ -23,16 +27,16 @@ export function CurrentReadBook({
       id: id,
       title: title,
       author: author,
-      rating: 0,
-      category: 'read',
+      shelf: shelfId,
+      rating: 'no rating',
     }
-    addNewBookData(bookObj)
-    deleteCurrentBook(id)
+    addNewBookData(bookObj, user)
+    deleteBook(id, user)
     handleRefresh()
   }
 
   function handleDeleteClick() {
-    deleteCurrentBook(id)
+    deleteBook(id, user)
     handleRefresh()
   }
 

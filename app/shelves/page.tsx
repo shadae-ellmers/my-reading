@@ -1,5 +1,5 @@
 import { AddBookButton } from '../../components/AddBookButton'
-import { CurrentReadBook } from '../../components/CurrentReadBook'
+import { SingleBook } from '../../components/SingleBook'
 import { getSession, withPageAuthRequired } from '@auth0/nextjs-auth0'
 import ShelvesButton from '../../components/ShelvesButton'
 import prisma from '../../prisma/client'
@@ -11,6 +11,12 @@ export default withPageAuthRequired(
     const user = session?.user
 
     const allShelves = await prisma.shelf.findMany({
+      where: {
+        auth_id: user?.sub,
+      },
+    })
+
+    const allBooks = await prisma.book.findMany({
       where: {
         auth_id: user?.sub,
       },
@@ -50,6 +56,12 @@ export default withPageAuthRequired(
           <AddShelfButton />
           <div className="text-center">
             <div className="flex flex-row flex-wrap pt-6 pb-6">
+              <a
+                href="#"
+                className="m-2 bg-myblack text-mywhite rounded-3xl px-8 py-2 text-small hover:text-mywhite hover:bg-mygreen"
+              >
+                All
+              </a>
               {allShelves?.map((shelf) => (
                 <div key={shelf.id}>
                   <a
@@ -78,9 +90,9 @@ export default withPageAuthRequired(
               </p>
             </div>
             <div className="flex flex-row flex-wrap">
-              {/* {allCurrentBooks?.map((book) => (
-                <CurrentReadBook key={book.id} {...book} />
-              ))} */}
+              {allBooks?.map((book) => (
+                <SingleBook key={book.id} {...book} />
+              ))}
             </div>
           </div>
         </div>
