@@ -2,35 +2,40 @@
 
 import { ChangeEvent, useState } from 'react'
 import { addNewBookData } from '../app/actions'
+import { useUser } from '@auth0/nextjs-auth0/client'
+import { Shelf } from '@prisma/client'
 
 type ApiBookProps = {
   title: string
   author_name: object
   cover_edition_key: string
+  shelves: Shelf[]
 }
 
 export function ApiBook({
   title,
   author_name,
   cover_edition_key,
+  shelves,
 }: ApiBookProps) {
-  const [category, setCategory] = useState('')
+  const { user } = useUser()
+  const [shelf, setShelf] = useState('')
   const [radio, showRadio] = useState(false)
-  const [readRating, setReadRating] = useState('5')
+  const [readRating, setReadRating] = useState('no rating')
 
   function changeCategory(event: ChangeEvent<HTMLInputElement>) {
-    setCategory(event.target.value)
+    setShelf(event.target.value)
   }
 
   const handleAdd = () => {
     const formattedBook = {
       title: title,
       author: author_name.toString(),
-      category: category,
+      shelf: shelf,
       cover: cover_edition_key,
       rating: readRating,
     }
-    addNewBookData(formattedBook)
+    addNewBookData(formattedBook, user)
   }
 
   const handleClick = () => {
@@ -76,24 +81,20 @@ export function ApiBook({
       {radio ? (
         <>
           <div onChange={changeCategory}>
-            <input
-              type="radio"
-              id="currentread"
-              name="book-category"
-              value="currentread"
-            />
-            Currently Reading
-            <input type="radio" id="tbr" name="book-category" value="tbr" /> To
-            Be Read
-            <input
-              type="radio"
-              id="read"
-              name="book-category"
-              value="read"
-            />{' '}
-            Read
+            {shelves.map((shelf) => (
+              <>
+                <input
+                  type="radio"
+                  id={shelf.title}
+                  name="book-shelf"
+                  value={shelf.title}
+                  key={shelf.id}
+                />
+                {shelf.title}
+              </>
+            ))}
           </div>
-          {category === 'read' ? (
+          {shelf === 'read' ? (
             <div onChange={handleRating}>
               <form>
                 <label htmlFor="rating">Add rating: </label>

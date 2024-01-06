@@ -1,13 +1,16 @@
 'use client'
 
-// BookSearch.tsx
-
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { getSearchResults } from '../app/actions'
 import { ApiBook } from './ApiBook'
 import { Pagination } from './Pagination'
+import { Shelf } from '@prisma/client'
 
-export function BookSearch() {
+interface BookSearchProps {
+  shelves: Shelf[]
+}
+
+export function BookSearch({ shelves }: BookSearchProps) {
   const [bookSearch, setBookSearch] = useState('' as string)
   const [searchResults, setSearchResults] = useState([] as any)
   const [currentPage, setCurrentPage] = useState(1)
@@ -72,17 +75,19 @@ export function BookSearch() {
             onChange={handleChange}
             className="bg-mywhite text-myblack py-2 px-2 mx-4"
           />
-          <input
+          <button
             className="mx-4 py-2 px-8 w-fit text-mywhite bg-myred rounded-full"
             type="submit"
-          />
+          >
+            Find book
+          </button>
         </form>
 
         {/* search results */}
         {searchResults.length > 0 && (
           <div className="py-4">
             {paginatedResults().map((book: any) => (
-              <ApiBook key={book.key} {...book} />
+              <ApiBook key={book.key} {...book} shelves={shelves} />
             ))}
           </div>
         )}

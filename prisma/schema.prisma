@@ -34,14 +34,16 @@ model Book {
   author    String
   cover     String
   dateRead  String?
-  rating    Int?
-  shelves   Shelf[]
-  user      User[]
+  rating    String?
+  shelves   Shelf        @relation(fields: [shelfId], references: [id])
+  shelfId   String
+  user      User         @relation(fields: [auth_id], references: [auth_id])
+  auth_id   String
 }
 
 model Shelf {
   id            String       @default(cuid()) @id
-  title         String
+  title         String       @unique
   description   String?
   user          User         @relation(fields: [auth_id], references: [auth_id])
   auth_id       String       

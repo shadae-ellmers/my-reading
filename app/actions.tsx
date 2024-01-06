@@ -3,39 +3,39 @@
 import { use } from 'react'
 import prisma from '../prisma/client'
 
-// // create data
+// get data
 
-// export async function addNewBookData(book: any) {
-//   if (book.category === 'currentread') {
-//     const newBook = prisma.currentBooks.create({
-//       data: {
-//         title: book.title,
-//         author: book.author,
-//         cover: book.cover,
-//       },
-//     })
-//     return newBook
-//   } else if (book.category === 'tbr') {
-//     const newBook = prisma.tbrBooks.create({
-//       data: {
-//         title: book.title,
-//         author: book.author,
-//         cover: book.cover,
-//       },
-//     })
-//     return newBook
-//   } else if (book.category === 'read') {
-//     const newBook = prisma.readBooks.create({
-//       data: {
-//         title: book.title,
-//         author: book.author,
-//         cover: book.cover,
-//         rating: Number(book.rating),
-//       },
-//     })
-//     return newBook
-//   }
-// }
+// create data
+
+export async function addNewBookData(book: any, user: object | undefined) {
+  let userId = user.sub
+  let bookShelfTitle = book.shelf
+
+  const shelf = await prisma.shelf.findUnique({
+    where: { title: bookShelfTitle },
+    select: { id: true },
+  })
+
+  if (!shelf) {
+    throw new Error(`Shelf with title ${bookShelfTitle} not found`)
+  }
+
+  const newBook = prisma.book.create({
+    data: {
+      title: book.title,
+      author: book.author,
+      cover: book.cover,
+      rating: book.rating,
+      user: {
+        connect: { auth_id: userId },
+      },
+      shelves: {
+        connect: { id: shelf.id },
+      },
+    },
+  })
+  return newBook
+}
 
 export async function addUser(user: object | undefined) {
   const allUsers = await prisma.user.findMany()
@@ -66,8 +66,6 @@ export async function addShelfData(
   sessionUser: object | undefined
 ) {
   let userId = sessionUser.sub
-
-  const allTings = await prisma.shelf.findMany()
 
   const addNewShelf = await prisma.shelf.create({
     data: {
