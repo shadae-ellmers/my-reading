@@ -20,6 +20,7 @@ export function SingleBook({
   shelfId,
 }: SingleBookProps) {
   const { user } = useUser()
+  const userId = user?.sub
   const router = useRouter()
 
   function handleMoveClick() {
@@ -30,13 +31,27 @@ export function SingleBook({
       shelf: shelfId,
       rating: 'no rating',
     }
-    addNewBookData(bookObj, user)
-    deleteBook(id, user)
+    if (typeof userId === 'string') {
+      addNewBookData(bookObj, userId)
+    } else {
+      console.error('Invalid userId:', userId)
+    }
+
+    if (typeof userId === 'string') {
+      deleteBook(id, userId)
+    } else {
+      console.error('Invalid userId:', userId)
+    }
+
     handleRefresh()
   }
 
   function handleDeleteClick() {
-    deleteBook(id, user)
+    if (typeof userId === 'string') {
+      deleteBook(id, userId)
+    } else {
+      console.error('Invalid userId:', userId)
+    }
     handleRefresh()
   }
 

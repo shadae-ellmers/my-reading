@@ -19,6 +19,7 @@ export function ApiBook({
   shelves,
 }: ApiBookProps) {
   const { user } = useUser()
+  const userId = user?.sub
   const [shelf, setShelf] = useState('')
   const [radio, showRadio] = useState(false)
   const [readRating, setReadRating] = useState('no rating')
@@ -35,7 +36,11 @@ export function ApiBook({
       cover: cover_edition_key,
       rating: readRating,
     }
-    addNewBookData(formattedBook, user)
+    if (typeof userId === 'string') {
+      addNewBookData(formattedBook, userId)
+    } else {
+      console.error('Invalid userId:', userId)
+    }
   }
 
   const handleClick = () => {

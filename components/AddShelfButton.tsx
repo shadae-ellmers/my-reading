@@ -6,7 +6,7 @@ import { useUser } from '@auth0/nextjs-auth0/client'
 
 export function AddShelfButton() {
   const { user } = useUser()
-
+  const userId = user?.sub
   const [shelfForm, displayShelfForm] = useState(false)
   const [newShelf, setNewShelf] = useState('')
 
@@ -16,7 +16,11 @@ export function AddShelfButton() {
 
   const handleSubmit = (evt: FormEvent) => {
     evt.preventDefault()
-    addShelfData(newShelf, user)
+    if (typeof userId === 'string') {
+      addShelfData(newShelf, userId)
+    } else {
+      console.error('Invalid userId:', userId)
+    }
   }
 
   const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {

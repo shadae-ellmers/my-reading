@@ -7,8 +7,7 @@ import prisma from '../prisma/client'
 
 // create data
 
-export async function addNewBookData(book: any, user: object | undefined) {
-  let userId = user.sub
+export async function addNewBookData(book: any, userId: string) {
   let bookShelfTitle = book.shelf
 
   const shelf = await prisma.shelf.findUnique({
@@ -37,10 +36,9 @@ export async function addNewBookData(book: any, user: object | undefined) {
   return newBook
 }
 
-export async function addUser(user: object | undefined) {
+export async function addUser(userId: string) {
   const allUsers = await prisma.user.findMany()
   let exists = false
-  let userId = user.sub
 
   for (let i = 0; i < allUsers.length; i++) {
     const element = allUsers[i]
@@ -61,12 +59,7 @@ export async function addUser(user: object | undefined) {
   }
 }
 
-export async function addShelfData(
-  name: string,
-  sessionUser: object | undefined
-) {
-  let userId = sessionUser.sub
-
+export async function addShelfData(name: string, userId: string) {
   const addNewShelf = await prisma.shelf.create({
     data: {
       title: name,
@@ -81,9 +74,7 @@ export async function addShelfData(
 
 // delete data
 
-export async function deleteBook(bookId: string, user: object | undefined) {
-  let userId = user.sub
-
+export async function deleteBook(bookId: string, userId: string) {
   const book = await prisma.book.findUnique({
     where: {
       id: bookId,
