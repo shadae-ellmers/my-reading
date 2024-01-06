@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { CurrentReadBook } from '../components/SingleBook'
 import { AddBookButton } from '../components/AddBookButton'
 import prisma from '../prisma/client'
 import TopBooks from '../components/TopBooks'
