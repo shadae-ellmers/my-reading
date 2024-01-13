@@ -62,16 +62,22 @@ export default withPageAuthRequired(
               >
                 All
               </a>
-              {allShelves?.map((shelf) => (
-                <div key={shelf.id}>
-                  <a
-                    href="#"
-                    className="m-2 bg-myblack text-mywhite rounded-3xl px-8 py-2 text-small hover:text-mywhite hover:bg-mygreen"
-                  >
-                    {shelf.title}
-                  </a>
-                </div>
-              ))}
+              {allShelves ? (
+                <>
+                  {allShelves?.map((shelf) => (
+                    <div key={shelf.id}>
+                      <a
+                        href="#"
+                        className="m-2 bg-myblack text-mywhite rounded-3xl px-8 py-2 text-small hover:text-mywhite hover:bg-mygreen"
+                      >
+                        {shelf.title}
+                      </a>
+                    </div>
+                  ))}
+                </>
+              ) : (
+                <p className="text-small">No shelves</p>
+              )}
             </div>
           </div>
 
@@ -89,11 +95,17 @@ export default withPageAuthRequired(
                 Default
               </p>
             </div>
-            <div className="flex flex-row flex-wrap">
-              {allBooks?.map((book) => (
-                <SingleBook key={book.id} {...book} />
-              ))}
-            </div>
+            {allBooks ? (
+              <>
+                <div className="flex flex-row flex-wrap">
+                  {allBooks?.map((book) => (
+                    <SingleBook key={book.id} {...book} />
+                  ))}
+                </div>
+              </>
+            ) : (
+              <p className="text-small">No books</p>
+            )}
           </div>
         </div>
       </section>

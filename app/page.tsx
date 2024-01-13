@@ -35,13 +35,21 @@ export default async function Page() {
             <>
               {/* Currently reading */}
               <div className="py-5 text-center">
-                <p>Here's what you're currently reading:</p>
+                <h2 className="text-extralg">
+                  Here's what you're currently reading:
+                </h2>
                 <AddBookButton />
-                <div className="flex flex-row flex-wrap">
-                  {allBooks?.map((book) => (
-                    <SingleBook key={book.id} {...book} />
-                  ))}
-                </div>
+                {allBooks ? (
+                  <>
+                    <div className="flex flex-row flex-wrap">
+                      {allBooks?.map((book) => (
+                        <SingleBook key={book.id} {...book} />
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <p className="text-large">No books</p>
+                )}
               </div>
             </>
           ) : (
