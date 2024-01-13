@@ -13,6 +13,8 @@ export default async function Page() {
     },
   })
 
+  const booksExist = prisma.book
+
   return (
     <section className="min-h-screen">
       {/* page banner */}
@@ -39,7 +41,7 @@ export default async function Page() {
                   Here's what you're currently reading:
                 </h2>
                 <AddBookButton />
-                {allBooks ? (
+                {booksExist ? (
                   <>
                     <div className="flex flex-row flex-wrap">
                       {allBooks?.map((book) => (
