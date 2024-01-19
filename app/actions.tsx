@@ -25,9 +25,7 @@ export async function addNewBookData(book: any, userId: string) {
       author: book.author,
       cover: book.cover,
       rating: book.rating,
-      user: {
-        connect: { auth_id: userId },
-      },
+      user_id: userId,
       shelves: {
         connect: { id: shelf.id },
       },
@@ -36,36 +34,11 @@ export async function addNewBookData(book: any, userId: string) {
   return newBook
 }
 
-export async function addUser(userId: string) {
-  const allUsers = await prisma.user.findMany()
-  let exists = false
-
-  for (let i = 0; i < allUsers.length; i++) {
-    const element = allUsers[i]
-
-    if (userId === element.auth_id) {
-      exists = true
-    }
-  }
-
-  if (exists === false) {
-    const newUser = await prisma.user.create({
-      data: {
-        auth_id: userId,
-      },
-    })
-
-    return newUser
-  }
-}
-
 export async function addShelfData(name: string, userId: string) {
   const addNewShelf = await prisma.shelf.create({
     data: {
       title: name,
-      user: {
-        connect: { auth_id: userId },
-      },
+      user_id: userId,
     },
   })
 
@@ -80,11 +53,11 @@ export async function deleteBook(bookId: string, userId: string) {
       id: bookId,
     },
     select: {
-      auth_id: true,
+      user_id: true,
     },
   })
 
-  if (!book || book.auth_id !== userId) {
+  if (!book || book.user_id !== userId) {
     throw new Error('Book not found or does not belong to the user.')
   }
 

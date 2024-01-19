@@ -12,22 +12,6 @@ datasource db {
   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
-model User {
-  id            String    @default(cuid()) @id
-  auth_id       String    @unique
-  createdAt     DateTime  @default(now()) @map(name: "created_at")
-  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
-  role          Role      @default(USER)
-  shelves       Shelf[]
-  books         Book[]
-  @@map(name: "users")
-}
-
-enum Role {
-  ADMIN
-  USER
-}
-
 model Book {
   id        String       @default(cuid()) @id
   title     String
@@ -37,15 +21,13 @@ model Book {
   rating    String?
   shelves   Shelf        @relation(fields: [shelfId], references: [id])
   shelfId   String
-  user      User         @relation(fields: [auth_id], references: [auth_id])
-  auth_id   String
+  user_id   String
 }
 
 model Shelf {
   id            String       @default(cuid()) @id
   title         String       @unique
   description   String?
-  user          User         @relation(fields: [auth_id], references: [auth_id])
-  auth_id       String       
+  user_id       String       
   books         Book[]
 }

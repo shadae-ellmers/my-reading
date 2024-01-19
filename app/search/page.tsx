@@ -13,7 +13,7 @@ export default async function Page() {
 
   const allShelves = await prisma.shelf.findMany({
     where: {
-      auth_id: user?.sub,
+      user_id: user?.sub,
     },
   })
 
