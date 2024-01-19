@@ -90,7 +90,9 @@ export async function deleteBook(bookId: string, userId: string) {
 // get book data from api
 
 export async function getSearchResults(results: any) {
-  const res = await fetch(`https://openlibrary.org/search.json?q=${results}`)
+  const res = await fetch(
+    `https://openlibrary.org/search.json?q=${results}&limit=15`
+  )
 
   if (!res.ok) {
     throw new Error('Failed to fetch data')

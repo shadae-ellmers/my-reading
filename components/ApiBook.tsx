@@ -23,6 +23,8 @@ export function ApiBook({
   const [shelf, setShelf] = useState('')
   const [radio, showRadio] = useState(false)
   const [readRating, setReadRating] = useState('no rating')
+  const firstAuthor =
+    Array.isArray(author_name) && author_name.length > 0 && author_name[0]
 
   function changeCategory(event: ChangeEvent<HTMLInputElement>) {
     setShelf(event.target.value)
@@ -31,7 +33,7 @@ export function ApiBook({
   const handleAdd = () => {
     const formattedBook = {
       title: title,
-      author: author_name.toString(),
+      author: firstAuthor.toString(),
       shelf: shelf,
       cover: cover_edition_key,
       rating: readRating,
@@ -78,9 +80,7 @@ export function ApiBook({
         </div>
         <div className="flex flex-col max-w-2xl">
           <h2 className="text-3xl my-1">{title}</h2>
-          {Array.isArray(author_name) && author_name.length > 0 && (
-            <p className="text-2xl my-1">{author_name[0]}</p>
-          )}
+          <p className="text-2xl my-1">{firstAuthor}</p>
         </div>
       </div>
       {radio ? (
