@@ -115,7 +115,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
             <>
               <div className="flex flex-row flex-wrap">
                 {relevantBooks?.map((book) => (
-                  <SingleBook key={book.id} {...book} />
+                  <SingleBook key={book.id} {...book} shelves={allShelves} />
                 ))}
               </div>
             </>

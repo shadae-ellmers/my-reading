@@ -98,7 +98,7 @@ export default withPageAuthRequired(
               <>
                 <div className="flex flex-row flex-wrap">
                   {allBooks?.map((book) => (
-                    <SingleBook key={book.id} {...book} />
+                    <SingleBook key={book.id} {...book} shelves={allShelves} />
                   ))}
                 </div>
               </>

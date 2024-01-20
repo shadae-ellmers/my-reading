@@ -1,8 +1,10 @@
 'use client'
 
 import { useUser } from '@auth0/nextjs-auth0/client'
-import { addNewBookData, deleteBook } from '../app/actions'
+import { addNewBookData, deleteBook, moveBookData } from '../app/actions'
 import { useRouter } from 'next/navigation'
+import { ChangeEvent, useState } from 'react'
+import { Shelf } from '@prisma/client'
 
 type SingleBookProps = {
   id: string
@@ -10,6 +12,7 @@ type SingleBookProps = {
   author: string
   cover: string
   shelfId: string
+  shelves: Shelf[]
 }
 
 export function SingleBook({
@@ -18,24 +21,34 @@ export function SingleBook({
   author,
   cover,
   shelfId,
+  shelves,
 }: SingleBookProps) {
   const { user } = useUser()
   const userId = user?.sub
   const router = useRouter()
+  const [showShelves, setShowShelves] = useState(false)
+  const [shelfChoice, setShelfChoice] = useState('')
+
+  function manageMove() {
+    setShowShelves(!showShelves)
+  }
+
+  function changeCategory(event: ChangeEvent<HTMLInputElement>) {
+    setShelfChoice(event.target.value)
+  }
 
   function handleMoveClick() {
     const bookObj = {
       id: id,
       title: title,
       author: author,
-      shelf: shelfId,
+      cover: cover,
+      shelf: shelfChoice,
       rating: 'no rating',
     }
     if (typeof userId === 'string') {
-      addNewBookData(bookObj, userId)
+      moveBookData(bookObj, userId, shelfChoice)
       deleteBook(id, userId, shelfId)
-    } else {
-      console.error('Invalid userId:', userId)
     }
     handleRefresh()
   }
@@ -72,10 +85,10 @@ export function SingleBook({
       </div>
       <div className="flex flex-row justify-center">
         <button
-          onClick={handleMoveClick}
+          onClick={manageMove}
           className="my-2 py-2 px-8 mr-0.5 text-small w-fit shadow-xl text-mywhite bg-myred border-2 border-myred rounded-l-3xl hover:bg-mywhite hover:text-myred"
         >
-          Finished Reading
+          Move
         </button>
         <button
           onClick={handleDeleteClick}
@@ -84,6 +97,32 @@ export function SingleBook({
           Remove
         </button>
       </div>
+      {showShelves === true ? (
+        <>
+          <p>Move to: </p>
+          <div onChange={changeCategory}>
+            {shelves.map((shelf) => (
+              <div key={shelf.id}>
+                <input
+                  type="radio"
+                  id={shelf.title}
+                  name="book-shelf"
+                  value={shelf.title}
+                  key={shelf.id}
+                />
+                {shelf.title}
+              </div>
+            ))}
+          </div>
+          <div>
+            <button onClick={handleMoveClick} type="submit">
+              Submit
+            </button>
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
     </div>
   )
 }

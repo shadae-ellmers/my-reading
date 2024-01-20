@@ -5,6 +5,38 @@ import prisma from '../prisma/client'
 
 // get data
 
+// move data
+
+export async function moveBookData(
+  book: any,
+  userId: string,
+  shelfName: string
+) {
+  const shelf = await prisma.shelf.findUnique({
+    where: { title: shelfName },
+    select: { id: true },
+  })
+
+  if (!shelf) {
+    throw new Error(`Shelf with title ${shelfName} not found`)
+  }
+
+  const newBook = await prisma.book.create({
+    data: {
+      title: book.title,
+      author: book.author,
+      cover: book.cover,
+      rating: book.rating,
+      user_id: userId,
+      shelves: {
+        connect: { id: shelf.id },
+      },
+    },
+  })
+
+  return newBook
+}
+
 // create data
 
 export async function addNewBookData(book: any, userId: string) {

@@ -24,7 +24,7 @@ export function ApiBook({
   const [radio, showRadio] = useState(false)
   const [readRating, setReadRating] = useState('no rating')
   const [status, setStatus] = useState(false)
-  const successMessage = `${title} is now on your ${shelf} favs!`
+  const successMessage = `${title} is now on your ${shelf} shelf!`
   const firstAuthor =
     Array.isArray(author_name) && author_name.length > 0 && author_name[0]
 
@@ -90,7 +90,7 @@ export function ApiBook({
         <>
           <div onChange={changeCategory}>
             {shelves.map((shelf) => (
-              <>
+              <div key={shelf.id}>
                 <input
                   type="radio"
                   id={shelf.title}
@@ -99,7 +99,7 @@ export function ApiBook({
                   key={shelf.id}
                 />
                 {shelf.title}
-              </>
+              </div>
             ))}
           </div>
           {shelf === 'read' ? (
