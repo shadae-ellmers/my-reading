@@ -1,7 +1,6 @@
 'use client'
 
 import { useUser } from '@auth0/nextjs-auth0/client'
-import UserProfile from './UserProfile'
 
 export default function Login() {
   const { user, error, isLoading } = useUser()
@@ -12,9 +11,15 @@ export default function Login() {
         <div className="flex flex-row">
           <a
             className="text-medium mx-2.5 rounded-3xl py-1.5 px-5 flex items-center hover:text-mywhite hover:bg-mygreen bg-mywhite"
-            href="/profile"
+            href="/shelves"
           >
-            Profile
+            Shelves
+          </a>
+          <a
+            className="text-medium mx-2.5 rounded-3xl py-1.5 px-5 flex items-center hover:text-mywhite hover:bg-mygreen bg-mywhite"
+            href="/stats"
+          >
+            Stats
           </a>
           <a
             className="text-medium mx-2.5 rounded-3xl py-1.5 px-5 flex items-center hover:text-mywhite hover:bg-mygreen bg-mywhite"
