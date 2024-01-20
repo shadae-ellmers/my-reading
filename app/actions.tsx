@@ -19,7 +19,7 @@ export async function addNewBookData(book: any, userId: string) {
     throw new Error(`Shelf with title ${bookShelfTitle} not found`)
   }
 
-  const newBook = prisma.book.create({
+  const newBook = await prisma.book.create({
     data: {
       title: book.title,
       author: book.author,
@@ -61,7 +61,7 @@ export async function deleteBook(bookId: string, userId: string) {
     throw new Error('Book not found or does not belong to the user.')
   }
 
-  const delBook = prisma.book.deleteMany({
+  const delBook = await prisma.book.deleteMany({
     where: {
       id: bookId,
     },
@@ -71,21 +71,34 @@ export async function deleteBook(bookId: string, userId: string) {
 
 // update book rating
 
-// export async function updateReadBook(
-//   bookId: string,
-//   bookRating: string,
-//   user: object | undefined
-// ) {
-//   const updBook = prisma.book.update({
-//     where: {
-//       id: bookId,
-//     },
-//     data: {
-//       rating: Number(bookRating),
-//     },
-//   })
-//   return updBook
-// }
+export async function updateReadBook(
+  bookId: string,
+  bookRating: string,
+  userId: string
+) {
+  const book = await prisma.book.findUnique({
+    where: {
+      id: bookId,
+    },
+    select: {
+      user_id: true,
+    },
+  })
+
+  if (!book || book.user_id !== userId) {
+    throw new Error('Book not found or does not belong to the user.')
+  }
+
+  const updBook = await prisma.book.update({
+    where: {
+      id: bookId,
+    },
+    data: {
+      rating: bookRating,
+    },
+  })
+  return updBook
+}
 
 // get book data from api
 
