@@ -3,6 +3,7 @@ import { SingleBook } from '../../components/SingleBook'
 import { getSession, withPageAuthRequired } from '@auth0/nextjs-auth0'
 import prisma from '../../prisma/client'
 import { AddShelfButton } from '../../components/AddShelfButton'
+import Link from 'next/link'
 
 export default withPageAuthRequired(
   async function Shelves() {
@@ -55,8 +56,8 @@ export default withPageAuthRequired(
           <div className="text-center">
             <div className="flex flex-row flex-wrap pt-6 pb-6">
               <a
-                href="#"
-                className="m-2 bg-myblack text-mywhite rounded-3xl px-8 py-2 text-small hover:text-mywhite hover:bg-mygreen"
+                href="/shelves"
+                className="m-2 bg-myred text-mywhite rounded-3xl px-8 py-2 text-small hover:text-mywhite hover:bg-mygreen"
               >
                 All
               </a>
@@ -65,7 +66,7 @@ export default withPageAuthRequired(
                   {allShelves?.map((shelf) => (
                     <div key={shelf.id} className="flex">
                       <a
-                        href="#"
+                        href={`/shelves/${shelf.title}`}
                         className="m-2 bg-myblack text-mywhite rounded-3xl px-8 py-2 text-small hover:text-mywhite hover:bg-mygreen"
                       >
                         {shelf.title}

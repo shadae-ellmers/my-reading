@@ -33,7 +33,7 @@ export default function RootLayout({
             <nav className="bg-myblack text-myblack flex justify-between px-40">
               <a className="hover:opacity-50" href="/">
                 <img
-                  src="readr-header-logo.png"
+                  src="/readr-header-logo.png"
                   alt="readr logo"
                   className="h-36 py-3"
                 />
@@ -61,7 +61,7 @@ export default function RootLayout({
               <div className="flex flex-row w-full justify-between">
                 <a href="/" className="hover:opacity-50">
                   <img
-                    src="readr-header-logo.png"
+                    src="/readr-header-logo.png"
                     alt="readr logo"
                     className="h-36 py-3"
                   />
@@ -73,7 +73,7 @@ export default function RootLayout({
                     className="flex justify-center py-0 my-auto  hover:opacity-50"
                   >
                     <img
-                      src="instagram.svg"
+                      src="/instagram.svg"
                       alt="instagram icon"
                       className="px-4"
                       width="70"
@@ -85,7 +85,7 @@ export default function RootLayout({
                     className="flex justify-center py-0 my-auto hover:opacity-50"
                   >
                     <img
-                      src="tiktok.svg"
+                      src="/tiktok.svg"
                       alt="tiktok icon"
                       className="p-4"
                       width="70"
@@ -97,7 +97,7 @@ export default function RootLayout({
                     className="flex justify-center py-0 my-auto hover:opacity-50"
                   >
                     <img
-                      src="twitter.svg"
+                      src="/twitter.svg"
                       alt="twitter icon"
                       className="p-4"
                       width="70"
