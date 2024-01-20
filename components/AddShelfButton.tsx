@@ -3,12 +3,14 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { addShelfData } from '../app/actions'
 import { useUser } from '@auth0/nextjs-auth0/client'
+import { useRouter } from 'next/navigation'
 
 export function AddShelfButton() {
   const { user } = useUser()
   const userId = user?.sub
   const [shelfForm, displayShelfForm] = useState(false)
   const [newShelf, setNewShelf] = useState('')
+  const router = useRouter()
 
   const handleClick = () => {
     displayShelfForm(!shelfForm)
@@ -18,9 +20,14 @@ export function AddShelfButton() {
     evt.preventDefault()
     if (typeof userId === 'string') {
       addShelfData(newShelf, userId)
+      handleRefresh()
     } else {
       console.error('Invalid userId:', userId)
     }
+  }
+
+  function handleRefresh() {
+    router.refresh()
   }
 
   const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {

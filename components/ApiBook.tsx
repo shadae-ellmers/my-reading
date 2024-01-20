@@ -23,6 +23,8 @@ export function ApiBook({
   const [shelf, setShelf] = useState('')
   const [radio, showRadio] = useState(false)
   const [readRating, setReadRating] = useState('no rating')
+  const [status, setStatus] = useState(false)
+  const successMessage = `${title} is now on your ${shelf} favs!`
   const firstAuthor =
     Array.isArray(author_name) && author_name.length > 0 && author_name[0]
 
@@ -40,6 +42,7 @@ export function ApiBook({
     }
     if (typeof userId === 'string') {
       addNewBookData(formattedBook, userId)
+      setStatus(true)
     } else {
       console.error('Invalid userId:', userId)
     }
@@ -118,6 +121,13 @@ export function ApiBook({
             <button onClick={handleAdd} type="submit">
               Submit
             </button>
+            {status === true ? (
+              <>
+                <p>{successMessage}</p>
+              </>
+            ) : (
+              <></>
+            )}
           </div>
         </>
       ) : (

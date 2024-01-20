@@ -33,22 +33,16 @@ export function SingleBook({
     }
     if (typeof userId === 'string') {
       addNewBookData(bookObj, userId)
+      deleteBook(id, userId, shelfId)
     } else {
       console.error('Invalid userId:', userId)
     }
-
-    if (typeof userId === 'string') {
-      deleteBook(id, userId)
-    } else {
-      console.error('Invalid userId:', userId)
-    }
-
     handleRefresh()
   }
 
   function handleDeleteClick() {
     if (typeof userId === 'string') {
-      deleteBook(id, userId)
+      deleteBook(id, userId, shelfId)
     } else {
       console.error('Invalid userId:', userId)
     }

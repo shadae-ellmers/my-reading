@@ -47,10 +47,15 @@ export async function addShelfData(name: string, userId: string) {
 
 // delete data
 
-export async function deleteBook(bookId: string, userId: string) {
-  const book = await prisma.book.findUnique({
+export async function deleteBook(
+  bookId: string,
+  userId: string,
+  shelf: string
+) {
+  const book = await prisma.book.findFirst({
     where: {
       id: bookId,
+      shelfId: shelf,
     },
     select: {
       user_id: true,
@@ -64,6 +69,7 @@ export async function deleteBook(bookId: string, userId: string) {
   const delBook = await prisma.book.deleteMany({
     where: {
       id: bookId,
+      shelfId: shelf,
     },
   })
   return delBook
