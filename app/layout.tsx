@@ -1,7 +1,8 @@
 import './globals.css'
 import { Space_Mono } from 'next/font/google'
 import { UserProvider } from '@auth0/nextjs-auth0/client'
-import Login from '../components/Login'
+import Login from '../components/NavLinks'
+import NavLinks from '../components/NavLinks'
 
 const spaceMono = Space_Mono({
   weight: '400',
@@ -26,41 +27,41 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="bg-mywhite text-myblack">
+    <html lang="en" className="bg-mywhite text-myblack w-screen">
       <UserProvider>
         <body className="flex flex-col min-h-screen justify-between">
           <div className={spaceMonoBig.className}>
-            <nav className="bg-myblack text-myblack flex justify-between px-40">
-              <a className="hover:opacity-50" href="/">
+            <nav className="bg-myblack text-myblack flex lg:justify-between lg:px-32 xl:px-40 flex-col lg:flex-row">
+              <a
+                className="hover:opacity-50 flex justify-center lg:justify-start"
+                href="/"
+              >
                 <img
                   src="/readr-header-logo.png"
                   alt="readr logo"
-                  className="h-36 py-3"
+                  className="lg:h-36 h-28 py-3"
                 />
               </a>
-              <div className="flex items-center">
-                <a
-                  className="text-medium mx-2.5 rounded-3xl h-fit py-1.5 px-5 flex items-center hover:text-mywhite hover:bg-mygreen bg-mywhite"
-                  href="/"
-                >
-                  Home
-                </a>
-                <Login />
+              <div className="flex justify-center">
+                <NavLinks />
               </div>
             </nav>
             <div className="bg-mywhite text-myblack relative h-auto justify-start">
               <div>{children}</div>
             </div>
-            <footer className="bg-myblack text-mywhite px-40">
-              <div className="flex flex-row w-full justify-between">
-                <a href="/" className="hover:opacity-50">
+            <footer className="bg-myblack text-mywhite sm:px-28 lg:px-32 xl:px-40 flex flex-col justify-center">
+              <div className="flex md:flex-row flex-col md:w-full md:justify-between justify-center">
+                <a
+                  href="/"
+                  className="hover:opacity-50 flex justify-center lg:justify-start"
+                >
                   <img
                     src="/readr-header-logo.png"
                     alt="readr logo"
-                    className="h-36 py-3"
+                    className="h-24 mb-3 md:mb-5 mt-6 lg:h-28"
                   />
                 </a>
-                <div className="flex row-auto w-full justify-end">
+                <div className="flex row-auto lg:w-full justify-center lg:justify-end pb-5 md:pb-0">
                   <a
                     href="https://www.instagram.com/readrco/"
                     target="_blank"
@@ -69,8 +70,7 @@ export default function RootLayout({
                     <img
                       src="/instagram.svg"
                       alt="instagram icon"
-                      className="px-4"
-                      width="70"
+                      className="px-4 md:w-16 w-14"
                     ></img>
                   </a>
                   <a
@@ -81,8 +81,7 @@ export default function RootLayout({
                     <img
                       src="/tiktok.svg"
                       alt="tiktok icon"
-                      className="p-4"
-                      width="70"
+                      className="p-4 md:w-16 w-14"
                     ></img>
                   </a>
                   <a
@@ -93,20 +92,19 @@ export default function RootLayout({
                     <img
                       src="/twitter.svg"
                       alt="twitter icon"
-                      className="p-4"
-                      width="70"
+                      className="p-4 md:w-16 w-14"
                     ></img>
                   </a>
                 </div>
               </div>
-              <div className="w-full h-1 bg-mywhite opacity-10"></div>
-              <div className="w-full flex flex-row py-6 justify-between text-small">
-                <p>©Copyright 2023 Readr</p>
-                <div className="flex flex-row justify-end">
-                  <a href="#" className="pr-4 hover:text-myred">
+              <div className="w-auto mx-8 h-1 bg-mywhite opacity-5 sm:mx-0 lg:h-1 lg:my-0 lg:w-auto"></div>
+              <div className="w-full flex flex-col py-8 justify-center lg:justify-between text-small text-center lg:w-full sm:flex-row sm:justify-between items-center">
+                <p className="py-2">©Copyright 2023 Readr</p>
+                <div className="flex md:flex-row md:justify-end flex-col justify-center">
+                  <a href="#" className="md:pr-4 py-2 hover:text-myred">
                     Privacy Policy
                   </a>
-                  <a href="#" className="pl-4 hover:text-myred">
+                  <a href="#" className="md:pl-4 py-2 hover:text-myred">
                     Cookie Policy
                   </a>
                 </div>

@@ -14,22 +14,22 @@ export default async function Page() {
           className="w-full max-h-60 object-cover opacity-50"
         ></img>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-3">
-          <h1 className="text-mywhite text-extralg bg-myblack bg-opacity-80 px-8 py-3 rounded-3xl text-center">
+          <h1 className="text-mywhite text-medium sm:text-extralg bg-myblack bg-opacity-80 px-8 py-3 rounded-3xl text-center">
             Reach your reading goals
           </h1>
         </div>
       </div>
 
-      <div className="text-2xl leading-loose py-8 px-40 flex">
-        <div className="items-center w-full">
+      <div className="text-2xl leading-loose px-5 sm:px-20 py-8 md:px-30 lg:px-40 flex justify-center">
+        <div className="items-center w-auto">
           {/* content */}
           <div className="py-5 text-center">
-            <h2 className="text-extralg">What is Readr?</h2>
-            <h3 className="text-large">
+            <h2 className="text-large sm:text-extralg">What is Readr?</h2>
+            <h3 className="text-medium sm:text-large">
               Our goal is to make reading fun and easy
             </h3>
-            <div className="flex flex-row justify-between py-10">
-              <div className="flex flex-col justify-start px-2.5 w-1/3">
+            <div className="flex flex-col md:flex-row md:justify-between py-10">
+              <div className="flex flex-col justify-start md:px-0 py-2.5 md:py-0 px-2.5 w-auto md:w-1/3">
                 <img
                   src="hand-drawn-flat-design-stack-books.jpg"
                   alt="hand drawn flat design stack books"
@@ -39,7 +39,7 @@ export default async function Page() {
                   Track your reading and habits
                 </p>
               </div>
-              <div className="flex flex-col justify-start px-2.5 w-1/3">
+              <div className="flex flex-col justify-start px-2.5 w-auto md:w-1/3">
                 <img
                   src="6885298.jpg"
                   alt=""
@@ -49,7 +49,7 @@ export default async function Page() {
                   See what your favourite people are reading
                 </p>
               </div>
-              <div className="flex flex-col justify-start px-2.5 w-1/3">
+              <div className="flex flex-col justify-start px-2.5 w-auto md:w-1/3">
                 <img
                   src="6885301.jpg"
                   alt=""
@@ -61,37 +61,23 @@ export default async function Page() {
           </div>
 
           {/* content divider */}
-          <div className="w-full h-0.5 bg-myblack opacity-10"></div>
-
-          {/* content with image */}
-          <div className="py-14 flex">
-            <div className="w-1/2 pr-8 flex justify-center flex-col">
-              <p className="text-left">
-                Readr is a unique platform that connects with other social
-                platforms to provide you easy recommendations. Content creaters
-                can link the books they mention directly on their profile, which
-                can save you time searching.
-              </p>
-            </div>
-            <img src="cozy-home.jpg" alt="" className="w-1/2 pl-8" />
-          </div>
-
-          {/* content divider */}
-          <div className="w-full h-0.5 bg-myblack opacity-10"></div>
+          <div className="w-full h-1 bg-myblack opacity-10"></div>
 
           {/* buttons */}
-          <div className="pt-14 pb-10 flex justify-center">
-            <h3 className="mr-8 pt-0.5 w-1/2 text-left">Ready to begin?</h3>
-            <div className="w-1/2 flex flex-row justify-center">
+          <div className="pt-14 pb-10 flex sm:flex-row flex-col items-center">
+            <h3 className="sm:mr-8 pt-0.5 mb-2 sm:mb-0 sm:w-1/3 xl:w-1/2 sm:text-left text-center text-large">
+              Ready to begin?
+            </h3>
+            <div className="sm:w-2/3 xl:w-1/2 flex sm:flex-row flex-col justify-center md:justify-end text-center">
               <a
                 href="#"
-                className="mr-2 bg-myblack text-mywhite rounded-3xl px-8 py-1 hover:text-mywhite hover:bg-mygreen"
+                className="sm:mr-2 my-2 sm:my-0 bg-myblack text-mywhite text-medium rounded-3xl px-6 py-2 hover:text-mywhite hover:bg-mygreen"
               >
                 Join for free
               </a>
               <a
                 href="#"
-                className="ml-2 bg-myblack text-mywhite rounded-3xl px-8 py-1 hover:text-mywhite hover:bg-mygreen"
+                className="sm:ml-2 mt-2 sm:mt-0 bg-myblack text-mywhite text-medium rounded-3xl px-6 py-2 hover:text-mywhite hover:bg-mygreen"
               >
                 Find out more
               </a>
