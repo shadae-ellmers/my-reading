@@ -11,6 +11,8 @@ export function AddShelfButton() {
   const [shelfForm, displayShelfForm] = useState(false)
   const [newShelf, setNewShelf] = useState('')
   const router = useRouter()
+  const buttonTheme =
+    'mx-2 my-2 text-mywhite rounded-3xl px-8 py-2 text-small hover:text-mywhite hover:bg-mygreen'
 
   const handleClick = () => {
     displayShelfForm(!shelfForm)
@@ -35,17 +37,29 @@ export function AddShelfButton() {
   }
 
   return (
-    <div className="flex flex-row pt-6">
-      <button
-        onClick={handleClick}
-        className="mx-2 my-2 bg-myblack text-mywhite rounded-3xl px-8 py-2 text-small hover:text-mywhite hover:bg-mygreen"
-      >
-        Add Shelf
-      </button>
+    <div className="flex flex-col pt-6">
+      <div>
+        <button
+          onClick={handleClick}
+          className={
+            shelfForm ? `bg-myred ${buttonTheme}` : `bg-myblack ${buttonTheme}`
+          }
+        >
+          Add Shelf
+        </button>
+      </div>
       {shelfForm ? (
-        <>
-          <form action="submit" onSubmit={handleSubmit}>
-            <label htmlFor="name" id="name">
+        <div className="p-2 bg-mypink max-w-xs">
+          <form
+            action="submit"
+            onSubmit={handleSubmit}
+            className="flex flex-col"
+          >
+            <label
+              htmlFor="name"
+              id="name"
+              className="text-small flex flex-col justify-center lg:my-2"
+            >
               Name:
             </label>
             <input
@@ -54,10 +68,18 @@ export function AddShelfButton() {
               value={newShelf}
               onChange={handleChange}
               placeholder="For example... Favourites"
+              className="max-w-xs mb-2 px-2 py-1"
             />
-            <button type="submit">Create shelf</button>
+            <div>
+              <button
+                type="submit"
+                className="mx-2 my-2 bg-myblack text-mywhite rounded-3xl px-8 py-2 text-small hover:text-mywhite hover:bg-mygreen"
+              >
+                Create shelf
+              </button>
+            </div>
           </form>
-        </>
+        </div>
       ) : (
         <></>
       )}
