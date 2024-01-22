@@ -32,14 +32,14 @@ export default withPageAuthRequired(
             className="w-full max-h-60 object-cover opacity-50"
           ></img>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-3">
-            <h1 className="text-mywhite text-extralg bg-myblack bg-opacity-80 px-8 py-3 rounded-3xl text-center">
+            <h1 className="text-mywhite text-medium md:text-extralg bg-myblack bg-opacity-80 px-8 py-3 rounded-3xl text-center">
               Shelves
             </h1>
           </div>
         </div>
 
         {/* page content */}
-        <div className="py-8 px-40 w-full">
+        <div className="py-8 px-5 sm:px-20 md:px-30 lg:px-40 justify-center">
           {/* breadcrumbs */}
           <div className="text-small flex flex-row">
             <a href="/" className="hover:underline hover:underline-offset-4">
@@ -81,16 +81,16 @@ export default withPageAuthRequired(
           </div>
 
           {/* content divider */}
-          <div className="w-full h-0.5 bg-myblack opacity-10"></div>
+          <div className="w-full h-1 bg-myblack opacity-10"></div>
 
           {/* books */}
           <div className="">
-            <div className="flex flex-row">
+            <div className="flex sm:flex-row flex-col">
               <AddBookButton />
-              <p className="flex flex-col justify-center pt-6 pl-5 pr-1 text-small">
-                Sort by:{' '}
+              <p className="flex flex-col justify-center pt-6 pl-2 sm:pl-5 sm:pr-1 text-small">
+                Sort by:
               </p>
-              <p className="flex flex-col justify-center pt-6 pl-1 pr-5 text-small">
+              <p className="flex flex-col justify-center pt-2 pl-2 sm:pt-6 sm:pl-1 sm:pr-5 text-small">
                 Default
               </p>
             </div>
@@ -103,7 +103,11 @@ export default withPageAuthRequired(
                 </div>
               </>
             ) : (
-              <p className="text-small">No books</p>
+              <div className="px-2 py-6">
+                <p className="text-small">
+                  No books on this shelf. Try adding some with the button above.
+                </p>
+              </div>
             )}
           </div>
         </div>

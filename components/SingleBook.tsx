@@ -67,7 +67,7 @@ export function SingleBook({
   }
 
   return (
-    <div className="flex flex-col justify-start w-1/3">
+    <div className="flex flex-col justify-start max-w-xs sm:w-1/2 xl:w-1/3">
       <div className="bg-mygreen flex flex-row rounded-3xl mx-4 mt-8 mb-2 shadow-xl">
         <img
           src={
@@ -79,8 +79,8 @@ export function SingleBook({
           className="w-2/5 rounded-l-3xl h-56 object-cover"
         />
         <div className="w-3/5 px-5 text-mywhite text-left flex flex-col justify-end pb-5">
-          <h3 className="text-large">{title}</h3>
-          <h4 className="text-medium">{author}</h4>
+          <h3 className="text-medium">{title}</h3>
+          <h4 className="text-small">{author}</h4>
         </div>
       </div>
       <div className="flex flex-row justify-center">
