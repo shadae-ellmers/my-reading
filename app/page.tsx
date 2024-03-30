@@ -9,8 +9,8 @@ export default async function Page() {
       {/* page banner */}
       <div className="relative bg-myblack">
         <img
-          src="flat-lay-bookmark-books-assortment.jpg"
-          alt="flat lay of books with tea and lavender"
+          src="open-books.jpeg"
+          alt="flat lay of sprawled open books"
           className="w-full max-h-60 object-cover opacity-50"
         ></img>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-3">
